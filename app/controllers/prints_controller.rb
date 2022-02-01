@@ -1,0 +1,2 @@
+class PrintsController < ApplicationController
+end
