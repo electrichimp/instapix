@@ -1,22 +1,15 @@
 class PrintsController < ApplicationController
-  def new_book
-    @print = Print.new
-    @print.product.category = :book
-  end
-
-  def new_photo
-    @print = Print.new
-    @print.product.category = :photo
-  end
-
-  def new_frame
-    @print = Print.new
-    @print.product.category = :frame
+  def new
+    @product = Product.find(params[:product_id])
+    @print = Print.new(product: @product)
+    case @print.product.category
+    when "book"
+      render :new_book, locals: { product: @product, print: @print }
+    end
   end
 
   def create
     @print = Print.new(print_params)
-
     if @print.save
 
     else

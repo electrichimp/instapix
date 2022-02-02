@@ -1,3 +1,5 @@
 class ProductsController < ApplicationController
-  has_many :prints
+  def show
+    @product = Product.find(params[:id])
+  end
 end

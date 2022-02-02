@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="book-card-m0 mt-5 pt-5">
+        <h2>Crear <%= print.product.name %></h2>
+
+          <%= simple_form_for([product, print]) do |f| %>
+            <%= f.input :title, label: "Qué título quieres poner?" %>
+            <%= f.input :cover_photo, as: :file, label: "Foto de portada?"%>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
+            <%= f.button :submit, "Crear #{print.product.name}" , class: "btn-primary"%>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

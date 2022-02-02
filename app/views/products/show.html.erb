@@ -1,0 +1,5 @@
+<div class="container">
+  <h2>Hola soy la hoja show de <%= @product.name %></h2>
+  <p>Si quiere crear un print de este producto, haz click abajo</p>
+  <%= link_to "Crear #{@product.name}", new_product_print_path(@product) %>
+</div>
