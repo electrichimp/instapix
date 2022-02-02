@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  get "/test", to: 'pages#test'
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
   end

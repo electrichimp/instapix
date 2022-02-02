@@ -4,8 +4,4 @@ class PagesController < ApplicationController
   def home
     @products = Product.all
   end
-  def test
-    @test = "Probando"
-
-  end
 end
