@@ -5,6 +5,10 @@ class PrintsController < ApplicationController
     case @print.product.category
     when "book"
       render :new_book, locals: { product: @product, print: @print }
+    when "frame"
+      render :new_frame, locals: { product: @product, print: @print }
+    when "photo"
+      render :new_photo, locals: { product: @product, print: @print }
     end
   end
 
