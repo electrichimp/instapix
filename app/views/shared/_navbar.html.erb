@@ -2,6 +2,14 @@
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
      <h3>instapixit</h3>
+     <% if user_signed_in? %>
+      <p style="font-size:10px">pending order: <%= pending_order %></p>
+      <% pending_order.prints.each do |print| %>
+        <span style="font-size:10px"><%= print.product.name %> ID<%= print.id %> - </span>
+      <% end %>
+     <% else %>
+      <%= "aca iria order_state" %>
+     <% end %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
