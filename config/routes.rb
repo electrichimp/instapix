@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   end
   resources :orders, only: [:index, :show, :update] do
-    member do
+    collection do
       patch :add_item
       patch :pay
     end
