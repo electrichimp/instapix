@@ -1,5 +1,6 @@
 class PrintsController < ApplicationController
   def new
+    session[:current_order] = "probando2"
     @product = Product.find(params[:product_id])
     @print = Print.new(product: @product)
     case @print.product.category
@@ -14,11 +15,14 @@ class PrintsController < ApplicationController
 
   def create
     @print = Print.new(print_params)
-    if @print.save
+    @print.order_id = session[:current_order]
+    @print.save
+    redirect_to root_path
+    # if @print.save
 
-    else
+    # else
 
-    end
+    # end
   end
 
 
@@ -26,6 +30,6 @@ class PrintsController < ApplicationController
   private
 
   def print_params
-    params.require(:print).permit(:title, :cover_photo, photos: [])
+    params.require(:print).permit(:product_id, :order_id, :title, :cover_photo, photos: [])
   end
 end

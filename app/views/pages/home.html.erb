@@ -13,9 +13,8 @@
     <h2 class="my-5 pl-5">Elije tu producto</h2>
     <div class="cards px-5">
       <% @products.each do |product| %>
-      <%= link_to product_path(product) do %>
-        <div class="card-trip">
 
+        <div class="card-trip">
           <% if product.photo.present? %>
             <%= cl_image_tag product.photo.key %>
           <% else %>
@@ -26,9 +25,13 @@
               <h2><%= product.name%></h2>
             </div>
             <h2 class="card-trip-pricing">S/.<%= product.base_price %></h2>
-            </div>
+          </div>
+          <div class="card-trip-btns-container">
+            <%= link_to "Empezar", new_product_print_path(product), class: "btn btn-flat" %>
+            <%= link_to "Mas info", product_path(product), class: "btn btn-flat" %>
+          </div>
         </div>
-      <% end %>
+
       <% end %>
     </div>
   </div>
