@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Product.destroy_all
+
+products = [
+  { name: "instaBook", category: "book", base_price: 30, photo_count: 30 },
+  { name: "instaFrame", category: "frame", base_price: 20, photo_count: 1 },
+  { name: "instaPhotos Pack10", category: "photo", base_price: 15, photo_count: 15 }
+]
+
+products.each do |product|
+  Product.create(product)
+end

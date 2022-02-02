@@ -1,0 +1,22 @@
+// CARDS CONTAINER
+
+.cards-container {
+  display: flex;
+  padding: 0 30px;
+}
+
+.cards-container > div {
+  flex-grow: 1;
+  max-width: 1000px;
+}
+
+.cards-container .cards {
+  flex-grow: 1;
+}
+
+.cards-container #map {
+  width: 300px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
