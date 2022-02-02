@@ -1,35 +1,49 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-  <% end %>
+  <div class="container-fluid">
+    <h3>Instapixit</h3>
+    <%#= link_to root_path, class: "navbar-brand" do %>
+      <%# <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e7808927-68fe-44cc-829c-ed754931ed6b/coWork.Kings-logo.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220127%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220127T232858Z&X-Amz-Expires=86400&X-Amz-Signature=681cee41b5767f4154b9f748455167ba257c90ab07470936bb73d2e4a7cb3aa2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22coWork.Kings-logo.svg%22&x-id=GetObject" alt="cowork kings"> %>
+    <%# end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+          <li class="nav-item">
+            <%= link_to "Productos", class: "nav-link" %>
+            <%#= link_to "My visits", my_visits_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Carrito", class: "nav-link" %>
+            <%#= link_to "My rentals", my_rentals_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%#= link_to "My coworkings", my_coworkings_path, class: "nav-link" %>
+          </li>
+          <a class="btn btn-flat mr-3" href="#">Crear cowork</a>
+          <li class="nav-item dropdown">
+            <%= image_tag "https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%# if current_user && current_user.photo.attached? %>
+              <%#= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%# else %>
+              <%#= image_tag "https://toppng.com/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%# end %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%#= link_to "Action", "#", class: "dropdown-item" %>
+              <%#= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
