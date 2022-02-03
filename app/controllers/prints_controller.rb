@@ -38,6 +38,8 @@ class PrintsController < ApplicationController
 
   def update
     @print = Print.find(params[:id])
+    byebug
+    # photos = @print.photos
     @print.update(print_params)
     case @print.product.category
     when "book"
