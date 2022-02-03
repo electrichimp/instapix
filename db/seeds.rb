@@ -1,6 +1,7 @@
 require "open-uri"
 
 Product.destroy_all
+Order.destroy_all
 
 product_0_details = '
   <li>instaBook item</li>
@@ -81,3 +82,36 @@ product_2.photos.attach(io: product_2_photos[1], filename: "main_photo.png", con
 product_2.photos.attach(io: product_2_photos[2], filename: "photo1.png", content_type: 'image/png')
 product_2.photos.attach(io: product_2_photos[3], filename: "photo2.png", content_type: 'image/png')
 product_2.save
+
+user = User.create(
+    first_name: "Luis",
+    last_name: "Augusto",
+    billing_address: "Jose Perez 234, Miraflores",
+    email: "luis@gmail.com",
+    password: '12345678',
+    password_confirmation: '12345678'
+  )
+
+orders = [
+  { shipping_address: "Lizardo Montero 450, Miraflores", user: user, state: "pending", total_price: 30, purchase_date: Date.today},
+  { shipping_address: "Pedro Venturo 425, Surco", user: user, state: "pending", total_price: 20, purchase_date: Date.today}
+]
+
+orders.each do |order|
+  Order.create(order)
+end
+
+prints = [
+  { title: "mi perfil", order_id: 1,
+    product_id: 2, quantity: 1, purchase_price: 20 },
+  { title: "mi familia", order_id: 1,
+    product_id: 2, quantity: 1, purchase_price: 20 },
+  { title: "mi libro 1", order_id: 2,
+    product_id: 1, quantity: 1, purchase_price: 30 },
+  { title: "mi familia 2", order_id: 2,
+    product_id: 2, quantity: 1, purchase_price: 20 }
+]
+
+prints.each do |print|
+  Print.create(print)
+end
