@@ -6,7 +6,11 @@ class PagesController < ApplicationController
   end
 
   def cart
-    @order = pending_order
+    @orders = pending_order
+  end
+
+  def drafts
+    @prints = print_drafts
   end
 
   def about_us

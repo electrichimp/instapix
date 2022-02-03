@@ -6,13 +6,23 @@
 
           <%= simple_form_for([@product, @print]) do |f| %>
             <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
-            <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn-primary"%>
+            <% if @new %>
+              <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
+            <% else %>
+              <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
+            <% end %>
           <% end %>
       </div>
     </div>
 
   </div>
-  <%= link_to "Confirmar #{@print.product.name}", root_path, class: "btn btn-flat" %>
+
+  <div>
+    <% unless @new %>
+      <%= link_to "Mandar al carrito", cart_path, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+
 
 <% if @print.photos.attached? %>
   <div class="book-card mt-5 pt-5">
