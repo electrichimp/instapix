@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="book-card mt-5 pt-5">
+        <h2>Crear <%= @print.product.name %></h2>
+
+          <%= simple_form_for([@product, @print]) do |f| %>
+            <%= f.input :title, label: "Qué título quieres poner?" %>
+            <%= f.input :cover_photo, as: :file, label: "Foto de portada?"%>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
+            <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn-primary"%>
+          <% end %>
+      </div>
+    </div>
+
+    <% if @print.cover_photo.attached? %>
+      <div class="col-md-6 col-xs-12">
+        <div class="book-card mt-5 pt-5">
+          <%= cl_image_tag @print.cover_photo.key, class: "cover-photo" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Confirmar #{@print.product.name}", cart_path, class: "btn btn-flat" %>
+
+<% if @print.photos.attached? %>
+  <div class="book-card mt-5 pt-5">
+    <div class="photos">
+      <% @print.photos.each do |photo| %>
+        <div class="photo-container">
+          <%= cl_image_tag photo.key, class: "photo" %>
+          <i class="fas fa-trash-alt delete-photo-btn"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+</div>
