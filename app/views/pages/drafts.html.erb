@@ -1,0 +1,28 @@
+<div class="container width-session">
+  <div class="card m-5 py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-xs-12">
+        <h2>En proceso</h2>
+        <div class="cards mt-5">
+          <% @prints.each do |print| %>
+            <%= link_to edit_print_path(print) do %>
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3),
+              rgba(0,0,0,0.3)), url('<%=
+              if print.cover_photo.attached?
+                cl_image_path print.cover_photo.key
+              elsif print.photos.attached?
+                cl_image_path print.photos[0].key
+              else
+                'https://source.unsplash.com/1600x900/?photos/1'
+              end
+              %>')">
+                <%= print.product.name %>
+              </div>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

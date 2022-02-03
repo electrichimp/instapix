@@ -35,7 +35,17 @@
 }
 
 .cover-photo {
-  width: 500px;
+  max-width: 500px;
+  width: 80%;
   border: 3px solid white;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 768px) {
+  .photos {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2px;
+  }
 }

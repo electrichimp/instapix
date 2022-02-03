@@ -3,7 +3,6 @@
     <%= link_to root_path, class: "navbar-brand" do %>
      <img src="https://res.cloudinary.com/juanma123/image/upload/v1643852305/title_h1_1_iyzpv0.png" alt="instapixit" class="navbar-logo">
     <% end %>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,11 +14,21 @@
           <li class="nav-item">
             <%= link_to "Nosotros", about_us_path, class: "nav-link" %>
           </li>
+
           <li class="nav-item">
+            <%= link_to drafts_path, class: "nav-link cart-link"  do %>
+              <i class="fas fa-edit"></i>
+              <% if print_drafts.any? %>
+                <span class="nav-counter"><%= print_drafts.count %></span>
+              <% end %>
+            <% end %>
+          </li>
+
+          <li>
             <%= link_to cart_path, class: "nav-link cart-link"  do %>
               <i class="fas fa-shopping-cart"></i>
-              <% if pending_order.prints.any? %>
-                <span class="cart-counter"><%= pending_order.prints.count %></span>
+              <% if pending_order.prints.where(complete: true).any? %>
+                <span class="nav-counter"><%= pending_order.prints.where(complete: true).count %></span>
               <% end %>
             <% end %>
           </li>

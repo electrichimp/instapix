@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :orders
+  has_many :orders, dependent: :delete_all
+  has_many :prints, through: :orders, dependent: :delete_all
 
   validates :first_name, presence: true
   validates :last_name, presence: true
