@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_224449) do
     t.integer "photo_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.string "details"
   end
 
   create_table "users", force: :cascade do |t|

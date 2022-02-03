@@ -1,0 +1,21 @@
+.center-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-show-product {
+  width: 98%;
+  margin: 0 auto;
+}
+
+.carousel-container {
+  height: 500px;
+  width: 80%;
+}
+
+@media (max-width: 600px) {
+  .container-show-product {
+    height: 82vh;
+  }
+}
