@@ -1,4 +1,25 @@
 
 <div class="container">
-  
+  <table class="table">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User</th>
+        <th scope="col">State</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Monto</th>
+        <th scope="col">Fecha_compra</th>
+        <th scope="col">Detalles</th>
+      </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %> </td>
+        <td><%= order.user_id %></td>
+        <td><%= order.state %></td>
+        <td><%= order.shipping_address %></td>
+        <td><%= order.total_price %></td>
+        <td><%= order.purchase_date %></td>
+        <td><%= link_to "Ver", order_path(order) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
