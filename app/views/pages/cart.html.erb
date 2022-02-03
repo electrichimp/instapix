@@ -9,8 +9,11 @@
         </div>
         <div class="col-md-8 col-xs-12">
           <ul>
-            <% @order.prints.each do |print| %>
-              <li><%= print.product.name %> x <%= print.quantity %> unidades - S/<%= print.product.base_price %></li>
+            <% @orders.prints.each do |print| %>
+              <li><%= print.id %> - <%= print.product.name %> x <%= print.quantity %> unidades - S/<%= print.product.base_price %>
+                  <%= link_to "Editar", edit_print_path(print) %>
+                  <%= link_to "Eliminar", print_path(print), method: :delete %>
+              </li>
             <% end %>
           </ul>
         </div>

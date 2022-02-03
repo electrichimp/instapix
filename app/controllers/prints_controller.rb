@@ -1,8 +1,8 @@
 class PrintsController < ApplicationController
   def new
-    session[:current_order] = "probando2"
     @product = Product.find(params[:product_id])
     @print = Print.new(product: @product)
+    @new = true
     case @print.product.category
     when "book"
       render :book_editor
@@ -49,6 +49,11 @@ class PrintsController < ApplicationController
     end
   end
 
+  def destroy
+    @print = Print.find(params[:id])
+    @print.destroy
+    redirect_to cart_path
+  end
 
   private
 
