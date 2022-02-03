@@ -1,0 +1,18 @@
+.section-header {
+  display: flex;
+  & img {
+    width: auto;
+    max-width: 130px;
+    height: auto;
+    max-height: 100px;
+    margin-left: 20px;
+  }
+}
+
+
+.cart-img {
+  width: auto;
+  max-width: 200px;
+  height: auto;
+  max-height: 200px;
+}
