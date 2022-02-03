@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="inline pt-4">
+  <td><%= link_to "Volver", orders_path %></td>
+  <div class="py-2">
+    <h3>Numero de orden: <%= @order.id %></h3>
+    <h3>Nombre: <%= @order.user.first_name %> <%= @order.user.last_name %></h3>
+
+  </div>
+
+
+  </div>
+
+  <table class="table pt-4">
+      <tr>
+        <th scope="col"># print</th>
+        <th scope="col">Nombre producto</th>
+        <th scope="col">Precio de compra</th>
+      </tr>
+    <% @order.prints.each do |print| %>
+      <tr>
+        <td><%= print.id %> </td>
+        <td><%= print.product.name %></td>
+        <td><%= print.purchase_price %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <td>Total </td>
+        <td></td>
+        <td><%= @order.prints.map{|print| print.purchase_price}.reduce(0, :+) %></td>
+      </tr>
+  </table>
+</div>
