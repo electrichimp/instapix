@@ -28,7 +28,7 @@
             <%= link_to cart_path, class: "nav-link cart-link"  do %>
               <i class="fas fa-shopping-cart"></i>
               <% if pending_order.prints.any? %>
-                <span class="nav-counter"><%= pending_order.prints.count %></span>
+                <span class="nav-counter"><%= pending_order.prints.where(complete: true).count %></span>
               <% end %>
             <% end %>
           </li>
