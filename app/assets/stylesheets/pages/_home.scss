@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+body {
+  font-family: Roboto;
+}
+.card {
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.card-violeta {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+}
