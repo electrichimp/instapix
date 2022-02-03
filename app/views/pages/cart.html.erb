@@ -1,0 +1,15 @@
+<div class="container width-session">
+  <div class="card m-5 py-5 w-500">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-xs-12">
+
+      <h2>Carrito <i class="fas fa-shopping-cart"></i></h2>
+      <ul>
+        <% @order.prints.each do |print| %>
+          <li><%= print.product.name %> x <%= print.quantity %> unidades - S/<%= print.product.base_price %></li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>

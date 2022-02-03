@@ -3,7 +3,6 @@
     <div class="col-md-6 col-xs-12">
       <div class="book-card mt-5 pt-5">
         <h2>Crear <%= @print.product.name %></h2>
-        <h2>Crear <%= session[:current_order] %></h2>
 
           <%= simple_form_for([@product, @print]) do |f| %>
             <%= f.input :title, label: "Qué título quieres poner?" %>
@@ -23,7 +22,7 @@
     <% end %>
   </div>
 
-  <%= link_to "Confirmar #{@print.product.name}", root_path, class: "btn btn-flat" %>
+  <%= link_to "Confirmar #{@print.product.name}", cart_path, class: "btn btn-flat" %>
 
 <% if @print.photos.attached? %>
   <div class="book-card mt-5 pt-5">
