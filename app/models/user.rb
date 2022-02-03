@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many :orders
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true

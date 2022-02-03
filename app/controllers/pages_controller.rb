@@ -4,4 +4,12 @@ class PagesController < ApplicationController
   def home
     @products = Product.all
   end
+
+  def cart
+    @order = pending_order
+  end
+
+  def about_us
+
+  end
 end

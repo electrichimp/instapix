@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get "cart", to: 'pages#cart', as: :cart
+  get "about", to: 'pages#about_us', as: :about_us
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
   end

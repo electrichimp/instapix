@@ -10,3 +10,31 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-lewagon .navbar-brand .navbar-logo {
+  width: 200px;
+}
+
+.cart-counter {
+  display: block;
+  height: 15px;
+  width: 15px;
+  line-height: 15px;
+
+  -moz-border-radius: 50%; /* or 50% */
+  border-radius: 50%; /* or 50% */
+
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-size: 11px;
+
+  position: absolute;
+  bottom: 7px;
+  right: -1px;
+}
+
+.cart-link {
+  position: relative;
+  margin-right: 20px;
+}

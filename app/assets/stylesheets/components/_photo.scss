@@ -1,0 +1,41 @@
+.photo {
+  width: 250px;
+  border: 3px solid white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.photo-container {
+  position: relative;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+
+.delete-photo-btn {
+  position: absolute;
+  color: white;
+  top: 7px;
+  right: 31px;
+  background-color: #353839;
+  padding: 6px;
+  border-radius: 50%;
+  opacity: 0.8;
+
+  &:hover {
+   opacity: 1;
+   background-color: white;
+   color: #353839;
+   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+}
+
+.cover-photo {
+  width: 500px;
+  border: 3px solid white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
