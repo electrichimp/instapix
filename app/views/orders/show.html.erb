@@ -27,7 +27,7 @@
       <tr>
         <td>Total </td>
         <td></td>
-        <td><%= @order.prints.map{|print| print.purchase_price}.reduce(0, :+) %></td>
+        <td><%= @order.prints.map{|print| print.purchase_price}.sum %></td>
       </tr>
   </table>
 </div>
