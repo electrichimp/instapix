@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :user
   enum state: %i[pending paid printing ready_to_deliver delivered cancelled]
+  belongs_to :user
   has_many :prints
 end
