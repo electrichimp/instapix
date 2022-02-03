@@ -5,26 +5,49 @@ class PrintsController < ApplicationController
     @print = Print.new(product: @product)
     case @print.product.category
     when "book"
-      render :new_book, locals: { product: @product, print: @print }
+      render :book_editor
     when "frame"
-      render :new_frame, locals: { product: @product, print: @print }
+      render :frame_editor
     when "photo"
-      render :new_photo, locals: { product: @product, print: @print }
+      render :photo_editor
     end
   end
 
   def create
     @print = Print.new(print_params)
-    @print.order_id = session[:current_order]
-    @print.save
-    redirect_to root_path
-    # if @print.save
-
-    # else
-
-    # end
+    @print.order = pending_order
+    @print.product = Product.find(params[:product_id])
+    if @print.save
+      redirect_to edit_print_path(@print)
+    else
+      render :new
+    end
   end
 
+  def edit
+    @print = Print.find(params[:id])
+    case @print.product.category
+    when "book"
+      render :book_editor
+    when "frame"
+      render :frame_editor
+    when "photo"
+      render :photo_editor
+    end
+  end
+
+  def update
+    @print = Print.find(params[:id])
+    @print.update(print_params)
+    case @print.product.category
+    when "book"
+      render :book_editor
+    when "frame"
+      render :frame_editor
+    when "photo"
+      render :photo_editor
+    end
+  end
 
 
   private
