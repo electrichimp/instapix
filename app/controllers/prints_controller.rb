@@ -38,7 +38,10 @@ class PrintsController < ApplicationController
 
   def update
     @print = Print.find(params[:id])
-    @print.update(print_params)
+    @print.photos.attach(params[:print][:photos]) if params[:print][:photos].present?
+    @print.cover_photo.attach(params[:print][:cover_photo]) if params[:print][:cover_photo].present?
+    @print.save
+    @print.update(title: print_params[:title])
     case @print.product.category
     when "book"
       render :book_editor
@@ -47,6 +50,13 @@ class PrintsController < ApplicationController
     when "photo"
       render :photo_editor
     end
+  end
+
+  def complete
+    @print = Print.find(params[:id])
+    @print.complete = true
+    @print.save
+    redirect_to cart_path
   end
 
   def destroy

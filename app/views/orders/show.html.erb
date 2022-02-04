@@ -21,13 +21,13 @@
       <tr>
         <td><%= print.id %> </td>
         <td><%= print.product.name %></td>
-        <td><%= print.purchase_price %></td>
+        <td><%= print.product.base_price %></td>
       </tr>
     <% end %>
       <tr>
         <td>Total </td>
         <td></td>
-        <td><%= @order.prints.map{|print| print.purchase_price}.sum %></td>
+        <td><%= @order.prints.map{|print| print.product.base_price}.sum %></td>
       </tr>
   </table>
 </div>

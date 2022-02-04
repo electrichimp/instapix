@@ -11,9 +11,9 @@
               if print.cover_photo.attached?
                 cl_image_path print.cover_photo.key
               elsif print.photos.attached?
-                'https://source.unsplash.com/1600x900/?photos/1'
-              else
                 cl_image_path print.photos[0].key
+              else
+                'https://source.unsplash.com/1600x900/?photos/1'
               end
               %>')">
                 <%= print.product.name %>

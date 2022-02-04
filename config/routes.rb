@@ -7,10 +7,16 @@ Rails.application.routes.draw do
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
   end
-  resources :prints, only: [:edit, :update, :destroy]
+  resources :prints, only: [:edit, :update, :destroy] do
+    member do
+      patch :complete
+    end
+  end
   resources :orders, only: [:index, :show, :update] do
     collection do
       patch :add_item
+    end
+    member do
       patch :pay
     end
   end
