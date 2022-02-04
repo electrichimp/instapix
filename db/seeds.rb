@@ -4,31 +4,31 @@ Product.destroy_all
 Order.destroy_all
 
 product_0_details = '
-  <li>instaBook item</li>
-  <li>A second item</li>
-  <li>A third item</li>
-  <li>A fourth item</li>
-  <li>And a fifth one</li>
+  <li>Con foto de portada</li>
+  <li>A doble cara</li>
+  <li>Impresión en papel de 200 gsm</li>
+  <li>100% color</li>
+  <li>El regalo perfecto</li>
 '
 product_1_details = '
-  <li>instaFrame item</li>
-  <li>A second item</li>
-  <li>A third item</li>
-  <li>A fourth item</li>
-  <li>And a fifth one</li>
+  <li>Marcos 100% de madera</li>
+  <li>Escoge el color que más te guste</li>
+  <li>Vidrio incluido</li>
+  <li>Protegido contra polillas</li>
+  <li>Enmarca tu vida</li>
 '
 product_2_details = '
-  <li>instaPhotos item</li>
-  <li>A second item</li>
-  <li>A third item</li>
-  <li>A fourth item</li>
-  <li>And a fifth one</li>
+  <li>Fromato polaroid de 10x8 cm</li>
+  <li>Acabado luster brillante 260gsm</li>
+  <li>Paquete desde 10 unidades</li>
+  <li>Libre de acido</li>
+  <li>Convierte tus fotos de instagram en fotos reales</li>
 '
 
 products_params = [
-  { name: "instaBook", description: "Es un instabook" ,details: product_0_details,  category: "book", base_price: 30, photo_count: 30 },
-  { name: "instaFrame", description: "Es un instaFrame" ,details: product_1_details, category: "frame", base_price: 20, photo_count: 1 },
-  { name: "instaPhotos Pack10",description: "Es un instaPhotos" ,details: product_2_details, category: "photo", base_price: 15, photo_count: 15 }
+  { name: "InstaBook", description: "Reinventamos el álbum fotográfico, y lo convertimos en el libro de tu vida" ,details: product_0_details,  category: "book", base_price: 30, photo_count: 30 },
+  { name: "InstaFrame", description: "Decora tus espacios con los recuerdos más cálidos de tu vida" ,details: product_1_details, category: "frame", base_price: 20, photo_count: 1 },
+  { name: "InstaPhotosx10",description: "Tus recuerdos en formato pequeño, especial para escritorios y refrigeradoras" ,details: product_2_details, category: "photo", base_price: 15, photo_count: 15 }
 ]
 
 # Photos de productos
