@@ -13,3 +13,31 @@ body {
   border-top-right-radius: 10px;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
 }
+
+.icono-camara {
+  padding-top: 15px;
+}
+.center-mirror {
+  display: block;
+  margin-left: 140px;
+  margin-top: 20px;
+  margin-right: auto;
+
+  width: 50%;
+}
+.center-photos {
+  padding-top: 15px;
+}
+
+h6 {
+  text-align: center;
+  margin-left: 20px;
+}
+
+h4 {
+  text-align: center;
+}
+
+#img-mirror {
+  text-align: center;
+}
