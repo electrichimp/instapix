@@ -14,10 +14,10 @@
                   <%= link_to "Editar", edit_print_path(print) %>
                   <%= link_to "Eliminar", print_path(print), method: :delete %>
               </li>
+            <% end %>
               <% if @order.prints.where(complete: true).any? %>
                 <%= link_to "Pagar", pay_order_path(@order), method: :patch, class: "btn btn-flat" %>
               <% end %>
-            <% end %>
           </ul>
         </div>
       </div>
