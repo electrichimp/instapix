@@ -20,7 +20,7 @@
 
   <div>
     <% unless @new %>
-      <%= link_to "Mandar al carrito", cart_path, class: "btn btn-flat" %>
+      <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
     <% end %>
   </div>
 

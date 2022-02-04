@@ -52,6 +52,13 @@ class PrintsController < ApplicationController
     end
   end
 
+  def complete
+    @print = Print.find(params[:id])
+    @print.complete = true
+    @print.save
+    redirect_to cart_path
+  end
+
   def destroy
     @print = Print.find(params[:id])
     @print.destroy
