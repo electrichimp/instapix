@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6 col-xs-12">
       <div class="book-card mt-5 pt-5">
-        <h2>Crear <%= @print.product.name %></h2>
+        <h2><%= @new ? "Crear" : "Editar" %> <%= @print.product.name %></h2>
 
           <%= simple_form_for([@product, @print]) do |f| %>
             <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>

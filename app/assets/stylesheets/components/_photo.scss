@@ -1,5 +1,5 @@
 .photo {
-  width: 250px;
+  max-width: 250px;
   border: 3px solid white;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
@@ -12,14 +12,15 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
+  max-width: 250px;
 }
 
 
 .delete-photo-btn {
   position: absolute;
   color: white;
-  top: 7px;
-  right: 31px;
+  top: 10px;
+  right: 10px;
   background-color: #353839;
   padding: 6px;
   border-radius: 50%;

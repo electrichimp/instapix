@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def cart
     @order = pending_order
+    @total_price = @order.prints.where(complete: true).map{ |p| p.product.base_price }.sum
   end
 
   def drafts
