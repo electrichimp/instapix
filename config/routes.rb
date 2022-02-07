@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       patch :add_item
     end
     member do
+      patch :ship
       patch :pay
     end
   end

@@ -1,13 +1,26 @@
-<div class="container width-session">
-  <div class="card m-5 py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-xs-12">
-      <h2>Carrito <i class="fas fa-shopping-cart"></i></h2>
-      <div class="row">
-        <div class="col-md-4 col-xs-12">
-          <img class="cart-img" src="https://res.cloudinary.com/juanma123/image/upload/v1643853935/Miroodles_-_Color_Comp_blg51g.png" alt= "camera">
+<div class="container">
+    <h2>Carrito <i class="fas fa-shopping-cart"></i></h2>
+
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <div class="card mr-2 p-3">
+          <h3>Enviar</h3>
+          <%= simple_form_for @order, url: ship_order_path(@order), method: :patch do |f| %>
+            <div class="form-inputs">
+              <%= f.input :shipping_address,
+                          required: true,
+                          autofocus: true,
+                          input_html: { id: 'shipping_address'} %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Confirmar direccion", class: "btn btn-flat" %>
+            </div>
+          <% end %>
         </div>
-        <div class="col-md-8 col-xs-12">
+      </div>
+
+      <div class="col-md-6 col-xs-12">
+        <div class="card p-3">
           <ul>
             <% @order.prints.where(complete: true).each do |print| %>
               <li><%= print.id %> - <%= print.product.name %> x <%= print.quantity %> unidades - S/<%= print.product.base_price %>
@@ -21,7 +34,7 @@
           </ul>
         </div>
       </div>
-      </div>
     </div>
-  </div>
+
+
 </div>

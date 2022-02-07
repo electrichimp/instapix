@@ -20,7 +20,14 @@ class PrintsController < ApplicationController
     if @print.save
       redirect_to edit_print_path(@print)
     else
-      render :new
+      case @print.product.category
+      when "book"
+        render :book_editor
+      when "frame"
+        render :frame_editor
+      when "photo"
+        render :photo_editor
+      end
     end
   end
 
