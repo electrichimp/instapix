@@ -8,6 +8,7 @@
             <%= f.input :title, label: "Qué título quieres poner?" %>
             <%= f.input :cover_photo, as: :file, label: "Foto de portada?"%>
             <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
+            <button>Cargar de instagram</button>
             <% if @new %>
               <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
             <% else %>

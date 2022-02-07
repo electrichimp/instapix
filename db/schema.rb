@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_02_06_205304) do
     t.string "title"
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.float "purchase_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
