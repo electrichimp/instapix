@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :prints, only: [:edit, :update, :destroy] do
     member do
+      delete "trash/:key", to: 'prints#trash_pic', as: :trash
       patch :complete
     end
   end

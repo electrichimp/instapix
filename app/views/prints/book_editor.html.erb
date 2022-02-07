@@ -28,7 +28,7 @@
 
   <div>
     <% unless @new %>
-      <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
+      <%= link_to "Mandar al carrito book editor", complete_print_path, method: :patch, class: "btn btn-flat" %>
     <% end %>
   </div>
 
@@ -38,7 +38,9 @@
       <% @print.photos.each do |photo| %>
         <div class="photo-container">
           <%= cl_image_tag photo.key, class: "photo" %>
-          <i class="fas fa-trash-alt delete-photo-btn"></i>
+          <%= link_to trash_print_path(key: photo.key), method: :delete do %>
+              <i class="fas fa-trash-alt delete-photo-btn"></i>
+          <% end %>
         </div>
       <% end %>
     </div>
