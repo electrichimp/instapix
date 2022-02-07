@@ -72,6 +72,16 @@ class PrintsController < ApplicationController
     redirect_to cart_path
   end
 
+  def trash_pic
+    @print = Print.find(params[:id])
+    # byebug
+    persisted_photos = @print.photos.reject {|photo| photo.key == params[:key]}
+    persisted_photos_blob = persisted_photos.map {|photo| photo.blob}
+    @print.photos.detach
+    @print.photos.attach persisted_photos_blob
+    redirect_to edit_print_path(@print)
+  end
+
   private
 
   def print_params

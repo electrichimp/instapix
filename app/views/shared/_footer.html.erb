@@ -1,12 +1,63 @@
-<div class="footer mt-auto">
-  <div class="footer-links">
+<%# <div class="footer mt-auto row">
+  <div class="footer-links col-md-6 col-sm-12">
     <a href="#"><i class="fab fa-github"></i></a>
     <a href="#"><i class="fab fa-instagram"></i></a>
     <a href="#"><i class="fab fa-facebook"></i></a>
     <a href="#"><i class="fab fa-twitter"></i></a>
     <a href="#"><i class="fab fa-linkedin"></i></a>
   </div>
-  <div class="footer-copyright">
+  <div class="footer-copyright col-md-6 col-sm-12">
     Hecho con  <i class="fas fa-heart"></i> x Clau, Luis, Benja & Juanma
   </div>
-</div>
+</div> %>
+
+  <!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h6>About</h6>
+        <p class="text-justify">Instapixit.com - tus recuerdos al instante is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple.</p>
+      </div>
+
+      <div class="col-xs-6 col-md-2">
+        <h6>Products</h6>
+        <ul class="footer-links">
+        <% @products.each do |product| %>
+          <li><a href=<%= product_path(product)%>><%= product.name.split.first %></a></li>
+        <% end %>
+      </div>
+
+      <div class="col-xs-6 col-md-4">
+        <!-- Links -->
+        <h6 class="text-uppercase fw-bold mb-4">
+          Contact
+        </h6>
+        <p><i class="fas fa-home me-3"></i> Av. Arenales 11, Lima - PE</p>
+        <p>
+          <i class="fas fa-envelope me-3"></i>
+          info@instapixit.com
+        </p>
+        <p><i class="fas fa-phone me-3"></i> + 51 234 567 88</p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+      <a href="#">Instapixit</a>.
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
