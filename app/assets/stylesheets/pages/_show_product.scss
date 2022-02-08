@@ -19,3 +19,44 @@
     height: 82vh;
   }
 }
+
+.user-photo {
+    width: 120px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#img-stars{
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+section p {
+	height: 170px;
+	width: 600px;
+	padding: 0;
+	margin: 0;
+	line-height: 20px;
+	vertical-align: top;
+}
+
+.main-topic {
+	width: 1200px;
+	margin: 0 auto;
+	clear: both;
+  display: flex;
+}
+
+.left-text{
+	vertical-align:middle;
+}
+
+.right-picture > img{
+	display: block;
+}
+.ribbon-container {
+  height: 300px;
+  width: 100%;
+}
