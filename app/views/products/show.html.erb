@@ -1,4 +1,3 @@
-<div class="cointainer">
 
   <div class="container-show-product center-vertical bg-white">
     <div class="row my-5">
@@ -52,10 +51,12 @@
 
 
   <div class="jumbotron mb-0">
-    <h1>Los mejores recuerdos se convierten en los mejores objetos, increible</h1>
-    <p></p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-    <img src="https://chatbooks.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fchtbks%2Fb46fb1cc-3ce2-4d77-92f9-b807f5001df7_CBIG_Stars_v1.png%3Fauto%3Dcompress%2Cformat&w=3840&q=75" id="img-stars" alt="">
+    <div class="container">
+      <h1 class="w-95 center-text">Los mejores recuerdos se convierten en los mejores objetos, increible</h1>
+      <p></p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      <img src="https://chatbooks.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fchtbks%2Fb46fb1cc-3ce2-4d77-92f9-b807f5001df7_CBIG_Stars_v1.png%3Fauto%3Dcompress%2Cformat&w=3840&q=75" id="img-stars" alt="">
+    </div>
   </div>
 
   <section>
@@ -121,23 +122,19 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden"></span>
               </button>
-          </div>
-      </div>
-  </section>
-
-
-
-    <div class="ribbon-container my-4 bg-secondary">
-        <div class="row d-flex align-items-center pt-4">
-            <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mx-auto">
-              <h2 class="text-center py-4">¿Todo preparado para comenzar tu aventura con Instapix?</h2>
-              <div class="d-flex justify-content-center pb-2">
-                <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
-              </div>
-            </div>
         </div>
     </div>
+</section>
 
 
 
-</div>
+  <div class="ribbon-container my-4 bg-secondary">
+      <div class="row d-flex align-items-center pt-4">
+          <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mx-auto center-vertical">
+            <h2 class="text-center py-4">¿Todo preparado para comenzar tu aventura con Instapix?</h2>
+            <div class="d-flex justify-content-center pb-2">
+              <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
+            </div>
+          </div>
+      </div>
+  </div>
