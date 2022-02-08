@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "cart", to: 'pages#cart', as: :cart
   get "drafts", to: 'pages#drafts', as: :drafts
   get "about", to: 'pages#about_us', as: :about_us
+  get "instagram", to: 'pages#instagram', as: :instagram
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
   end

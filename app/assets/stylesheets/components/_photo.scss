@@ -12,9 +12,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
-  max-width: 250px;
+  width: 100%;
+  border: 2px dashed rgba(0, 0, 0, 0.7);
+  padding: 1rem;
 }
-
 
 .delete-photo-btn {
   position: absolute;

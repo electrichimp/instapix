@@ -10,7 +10,10 @@
     <div class="cards-container mb-5">
       <div>
         <div class="section-header">
-          <h2 class="my-5 pl-5">Elije tu producto</h2>
+          <h2 class="my-5 pl-5">Elige tu producto</h2>
+          <% if current_user && current_user.instagram_auth_code %>
+            <h3>Del current user:<%= current_user.instagram_auth_code %></h3>
+          <% end %>
         </div>
         <div class="cards px-5">
           <% @products.each do |product| %>
