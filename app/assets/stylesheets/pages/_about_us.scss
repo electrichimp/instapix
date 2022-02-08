@@ -70,3 +70,8 @@ p {
 h2 {
   color: #6048f0;
 }
+
+.promesas:before {
+  content: "✓";
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
