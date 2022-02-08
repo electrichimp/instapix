@@ -10,7 +10,10 @@
     <div class="cards-container mb-5">
       <div>
         <div class="section-header">
-          <h2 class="my-5 pl-5">Elije tu producto</h2>
+          <h2 class="my-5 pl-5">Elige tu producto</h2>
+          <% if current_user && current_user.instagram_auth_code %>
+            <h3>Del current user:<%= current_user.instagram_auth_code %></h3>
+          <% end %>
         </div>
         <div class="cards px-5">
           <% @products.each do |product| %>
@@ -80,32 +83,45 @@
         <div class="section-header">
           <h2 class="my-5 pl-5">¿Qué dice la gente?</h2>
         </div>
-        <div class="d-flex justify-content-around">
-          <div class="card-home" style ="width: 350px;">
-            <div class="d-flex">
-              <div class="text-center pt-3">
-                <h5><strong>Fotos preciosas en segundos</strong></h5>
-                <p class="nombre">MARIA GUEVARA</p>
-                <p class="carrera">Abogada</p>
-              </div>
-              <div class="card-violeta">
-                <img src="https://res.cloudinary.com/deavmhgtx/image/upload/v1643987382/maria-guevara_gtuw9r.jpg">
+
+        <div class="row my-5">
+          <div class="col-md-6 col-sm-12">
+
+            <div class="card-home" style ="width: 350px;">
+              <div class="d-flex">
+                <div class="text-center pt-3">
+                  <h5><strong>Fotos preciosas en segundos</strong></h5>
+                  <p class="nombre">MARIA GUEVARA</p>
+                  <p class="carrera">Abogada</p>
+                </div>
+                <div class="card-violeta">
+                  <img src="https://res.cloudinary.com/deavmhgtx/image/upload/v1643987382/maria-guevara_gtuw9r.jpg">
+                </div>
               </div>
             </div>
+
           </div>
-          <div class="card-home" style ="width: 350px;">
-            <div class="d-flex">
-              <div class="text-center pt-3 px-3">
-                <h5><strong>Que liiindos books, amo!</strong></h5>
-                <p class="nombre">KATTY MELGAR</p>
-                <p class="carrera">Diseñadora</p>
-              </div>
-              <div class="card-violeta">
-                <img src="https://res.cloudinary.com/deavmhgtx/image/upload/v1643987383/katty-melgar_nruk69.jpg">
+
+          <div class="col-md-6 col-sm-12 center-vertical">
+
+            <div class="card-home" style ="width: 350px;">
+              <div class="d-flex">
+                <div class="text-center pt-3 px-3">
+                  <h5><strong>Que liiindos books, amo!</strong></h5>
+                  <p class="nombre">KATTY MELGAR</p>
+                  <p class="carrera">Diseñadora</p>
+                </div>
+                <div class="card-violeta">
+                  <img src="https://res.cloudinary.com/deavmhgtx/image/upload/v1643987383/katty-melgar_nruk69.jpg">
+                </div>
               </div>
             </div>
+
           </div>
         </div>
+
+
+
       </div>
     </div>
 

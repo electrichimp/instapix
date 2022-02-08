@@ -1,13 +1,28 @@
-<div class="container width-session">
-  <div class="card m-5 py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-xs-12">
-      <h2>Carrito <i class="fas fa-shopping-cart"></i></h2>
-      <div class="row">
-        <div class="col-md-4 col-xs-12">
-          <img class="cart-img" src="https://res.cloudinary.com/juanma123/image/upload/v1643853935/Miroodles_-_Color_Comp_blg51g.png" alt= "camera">
+<%
+=begin%>
+ <div class="container">
+    <h2>Carrito <i class="fas fa-shopping-cart"></i></h2>
+
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <div class="card mr-2 p-3">
+          <h3>Enviar</h3>
+          <%= simple_form_for @order, url: ship_order_path(@order), method: :patch do |f| %>
+            <div class="form-inputs">
+              <%= f.input :shipping_address,
+                          required: true,
+                          autofocus: true,
+                          input_html: { id: 'shipping_address'} %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Confirmar direccion", class: "btn btn-flat" %>
+            </div>
+          <% end %>
         </div>
-        <div class="col-md-8 col-xs-12">
+      </div>
+
+      <div class="col-md-6 col-xs-12">
+        <div class="card p-3">
           <ul>
             <% @order.prints.where(complete: true).each do |print| %>
               <li><%= print.id %> - <%= print.product.name %> x <%= print.quantity %> unidades - S/<%= print.product.base_price %>
@@ -16,12 +31,139 @@
               </li>
             <% end %>
               <% if @order.prints.where(complete: true).any? %>
-                <%= link_to "Pagar", pay_order_path(@order), method: :patch, class: "btn btn-flat" %>
+                <%= link_to "Pagar", pay_order_path(@order), method: :patch class: "btn btn-flat" %>
               <% end %>
           </ul>
         </div>
       </div>
+    </div>
+
+
+</div>
+<%
+=end%>
+
+
+<% if @order.prints.where(complete: true).any? %>
+
+<div class="px-4 px-lg-0">
+  <!-- For demo purpose -->
+  <div class="container py-5 text-center">
+    <h1 class="display-4">Carrito</h1>
+  </div>
+  <!-- End -->
+
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+          <!-- Shopping cart table -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 px-3 text-uppercase">Producto</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Precio</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Cantidad</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remover</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @order.prints.where(complete: true).each do |print| %>
+                  <tr>
+                    <th scope="row" class="border-0">
+                      <div class="p-2">
+                        <img src="https://source.unsplash.com/1600x900/?photo+album/1" alt="" width="70" class="img-fluid rounded shadow-sm">
+                        <div class="ml-3 d-inline-block align-middle">
+                          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"><%= print.product.name %></a></h5><span class="text-muted font-weight-normal font-italic d-block">Categoría: <%= print.product.category %></span>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="border-0 align-middle"><strong>S/.<%= print.product.base_price %></strong></td>
+                    <td class="border-0 align-middle"><strong><%= print.quantity %></strong></td>
+                    <td class="border-0 align-middle">
+                      <%= link_to print_path(print), method: :delete, remote: true  do %>
+                        <i class="fa fa-trash text-dark"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
       </div>
+
+      <div class="row py-5 p-4 bg-white rounded shadow-sm" data-controller="ship-pay-order">
+
+        <div class="col-lg-6">
+
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Cupón de descuento</div>
+          <div class="p-4">
+            <div class="input-group mb-4 border rounded-pill p-2">
+              <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+              <div class="input-group-append border-0">
+                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill btn-flat" data-action='click->ship-pay-order#coupon'><i class="fa fa-gift mr-2"></i>Aplicar</button>
+              </div>
+            </div>
+            <span class="text-secondary d-none" data-ship-pay-order-target="coupon">Codigo inválido</span>
+          </div>
+
+
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Dirección</div>
+          <div class="p-4">
+            <%= simple_form_for @order, url: ship_order_path(@order), remote: true,
+            data: { ship_pay_order_target: 'form'}, method: :patch do |f| %>
+              <div class="input-group mb-4 border rounded-pill p-3">
+                <%= f.input :shipping_address,
+                            required: true,
+                            autofocus: true,
+                            label: false,
+                            input_html: { id: 'shipping_address', class: 'form-control border-0', placeholder: "Dirección"} %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Resumen</div>
+          <div class="p-4">
+            <ul class="list-unstyled mb-4">
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Subtotal </strong><strong>S/<%= (@total_price/1.18).round(2) %></strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Costo de envío</strong><strong>S/.5.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">IGV</strong><strong>S/.<%= (@total_price - (@total_price/1.18).round(2)).round(2)%></strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                <h5 class="font-weight-bold">S/<%= @total_price + 5 %></h5>
+              </li>
+            </ul><button type="submit" class="btn btn-dark rounded-pill py-2 btn-block btn-flat" data-action='click->ship-pay-order#send'>Pagar</button>
+          </div>
+        </div>
+
+
+
+      </div>
+
     </div>
   </div>
 </div>
+
+<% else %>
+<h3>Compra pueh</h3>
+<% end %>
+
+
+<script>
+  // const shipping_form = document.getElementById('edit_order_17')
+  // console.log(shipping_form)
+</script>

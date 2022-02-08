@@ -20,7 +20,14 @@ class PrintsController < ApplicationController
     if @print.save
       redirect_to edit_print_path(@print)
     else
-      render :new
+      case @print.product.category
+      when "book"
+        render :book_editor
+      when "frame"
+        render :frame_editor
+      when "photo"
+        render :photo_editor
+      end
     end
   end
 
@@ -38,17 +45,28 @@ class PrintsController < ApplicationController
 
   def update
     @print = Print.find(params[:id])
-    @print.photos.attach(params[:print][:photos]) if params[:print][:photos].present?
-    @print.cover_photo.attach(params[:print][:cover_photo]) if params[:print][:cover_photo].present?
-    @print.save
-    @print.update(title: print_params[:title])
-    case @print.product.category
-    when "book"
-      render :book_editor
-    when "frame"
-      render :frame_editor
-    when "photo"
-      render :photo_editor
+    if print_params[:photos] || print_params[:cover_photo] || print_params[:title]
+      @print.photos.attach(params[:print][:photos]) if params[:print][:photos].present?
+      @print.cover_photo.attach(params[:print][:cover_photo]) if params[:print][:cover_photo].present?
+      @print.save
+      @print.update(title: print_params[:title])
+      case @print.product.category
+      when "book"
+        render :book_editor
+      when "frame"
+        render :frame_editor
+      when "photo"
+        render :photo_editor
+      end
+    else
+      case @print.product.category
+      when "book"
+        render :book_editor
+      when "frame"
+        render :frame_editor
+      when "photo"
+        render :photo_editor
+      end
     end
   end
 
@@ -65,9 +83,19 @@ class PrintsController < ApplicationController
     redirect_to cart_path
   end
 
+  def trash_pic
+    @print = Print.find(params[:id])
+    persisted_photos = @print.photos.reject {|photo| photo.key == params[:key]}
+    persisted_photos_blob = persisted_photos.map {|photo| photo.blob}
+    @print.photos.detach
+    @print.photos.attach persisted_photos_blob
+    redirect_to edit_print_path(@print)
+  end
+
   private
 
   def print_params
+
     params.require(:print).permit(:product_id, :order_id, :title, :cover_photo, photos: [])
   end
 end

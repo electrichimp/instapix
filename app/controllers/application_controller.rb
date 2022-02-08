@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :pending_order
   helper_method :print_drafts
+  before_action :set_products
 
   def pending_order
     if user_signed_in?
@@ -29,4 +30,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || root_path
   end
+
+  def set_products
+    @products = Product.all
+  end
+
 end

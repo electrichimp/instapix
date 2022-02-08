@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   get "cart", to: 'pages#cart', as: :cart
   get "drafts", to: 'pages#drafts', as: :drafts
   get "about", to: 'pages#about_us', as: :about_us
+  get "instagram", to: 'pages#instagram', as: :instagram
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
   end
   resources :prints, only: [:edit, :update, :destroy] do
     member do
+      delete "trash/:key", to: 'prints#trash_pic', as: :trash
       patch :complete
     end
   end
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
       patch :add_item
     end
     member do
+      patch :ship
       patch :pay
     end
   end

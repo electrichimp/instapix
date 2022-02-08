@@ -2,12 +2,14 @@
   <div class="row">
     <div class="col-md-6 col-xs-12">
       <div class="book-card mt-5 pt-5">
-        <h2>Crear <%= @print.product.name %></h2>
+        <h2><%= @new ? "Crear" : "Editar" %> <%= @print.product.name %></h2>
 
           <%= simple_form_for([@product, @print]) do |f| %>
             <%= f.input :title, label: "Qué título quieres poner?" %>
             <%= f.input :cover_photo, as: :file, label: "Foto de portada?"%>
             <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
+            <a target="_blank" href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://cbb5-2001-1388-3c1-7520-dcb6-f211-1b91-735b.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code"
+            >Cargar de instagram</a>
             <% if @new %>
               <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
             <% else %>
@@ -28,7 +30,7 @@
 
   <div>
     <% unless @new %>
-      <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
+      <%= link_to "Mandar al carrito book editor", complete_print_path, method: :patch, class: "btn btn-flat" %>
     <% end %>
   </div>
 
@@ -38,7 +40,9 @@
       <% @print.photos.each do |photo| %>
         <div class="photo-container">
           <%= cl_image_tag photo.key, class: "photo" %>
-          <i class="fas fa-trash-alt delete-photo-btn"></i>
+          <%= link_to trash_print_path(key: photo.key), method: :delete do %>
+              <i class="fas fa-trash-alt delete-photo-btn"></i>
+          <% end %>
         </div>
       <% end %>
     </div>
