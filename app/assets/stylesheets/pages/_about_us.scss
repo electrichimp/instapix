@@ -36,11 +36,37 @@ body {
 }
 .titulo-card {
   font-family: "Roboto Mono", monospace;
-  font-weight: regular;
 }
 .catch {
   font-family: "Roboto Mono", monospace;
-  font-weight: regular;
   text-align: center;
   padding-left: 20px;
+}
+
+.texto-team {
+  text-align: center;
+  font-size: 16px;
+}
+
+.workwith {
+  color: #6048f0;
+}
+
+.text-sm {
+  font: size 16px;
+}
+
+h4,
+i {
+  font-family: "Roboto Mono", monospace;
+  font: size 5px;
+}
+
+.list-check {
+  font-size: 16px;
+}
+
+.ul,
+p {
+  font-size: 16px;
 }
