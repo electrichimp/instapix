@@ -17,4 +17,9 @@ class PagesController < ApplicationController
   def about_us
 
   end
+
+  def instagram
+    current_user.instagram_auth_code = params[:code]
+    render :home
+  end
 end
