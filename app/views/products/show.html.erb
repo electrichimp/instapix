@@ -1,18 +1,19 @@
+<!--este es el carrousel-->
 
   <div class="container-show-product center-vertical bg-white">
-    <div class="row my-5">
+    <div class="row">
       <div class="col-md-8 col-sm-12">
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <% @product.photos.each_with_index do |photo, index| %>
               <% if index==0 %>
-                <div class="carousel-item active" data-bs-interval="2000">
-                  <%= cl_image_tag photo.key, style: "width: 100%; height: 500px; object-fit: cover;" ,
+                <div class="carousel-item active" data-bs-interval="3000">
+                  <%= cl_image_tag photo.key, style: "width: 100%; height: 600px; object-fit: cover;" ,
                     class: "d-block w-100" %>
                 </div>
               <% else %>
-                <div class="carousel-item" data-bs-interval="2000">
-                  <%= cl_image_tag photo.key, style: "width: 100%; height: 500px; object-fit: cover;" ,
+                <div class="carousel-item" data-bs-interval="3000">
+                  <%= cl_image_tag photo.key, style: "width: 100%; height: 600px; object-fit: cover;" ,
                     class: "d-block w-100" %>
                 </div>
               <% end %>
@@ -29,9 +30,9 @@
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-12 center-vertical">
+      <div class="col-md-4 col-sm-12 center-vertical container-features">
         <div class="container">
-          <h2><strong>
+          <h2 class="py-2"><strong>
               <%= @product.name %>
             </strong></h2>
           <h3 style="color: #6048F0;">S/.<%= @product.base_price %>
@@ -42,42 +43,58 @@
           <ul>
             <%= sanitize @product.details %>
           </ul>
-          <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
+          <div class="text-center pt-5 pb-5">
+            <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 
+
+<section>
 
   <div class="jumbotron mb-0">
     <div class="container">
-      <h1 class="w-95 center-text">Los mejores recuerdos se convierten en los mejores objetos, increible</h1>
+      <h1 class="center-text">
+        "No creí la calidad de los productos cuando lo tuve en mis manos.
+        Realmente es un producto premium, siempre quedo bien en los regalos."
+      </h1>
       <p></p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-      <img src="https://chatbooks.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fchtbks%2Fb46fb1cc-3ce2-4d77-92f9-b807f5001df7_CBIG_Stars_v1.png%3Fauto%3Dcompress%2Cformat&w=3840&q=75" id="img-stars" alt="">
+      <p><a class="btn btn-flat" href="#" role="button">Learn more</a></p>
+
     </div>
   </div>
 
-  <section>
-      <div class="main-topic">
-        <div class="left-text">
-          <h3 class="mt-2">Deadpool Fans Petition 'SNL' for Superhero to Host</h3>
-          <p>
-            Deadpool fans want its superhero to host Saturday Night Live — Deadpool, that is, not Ryan Reynolds.
-            Fans of the Merc With a Mouth, who led the Marvel film to a history-making debut at the box office,
-            have launched a Change.org petition calling for the antihero to host an upcoming episode of the NBC sketch comedy show.
-            "We've all seen the trailers, the magazine covers, the viral videos, and the billboards by now,
-            so what's left for Deadpool (Ryan Reynolds) to do?" creator Andrew Stege asks in the petition,
-            which is directed to SNL, creator Lorne Michaels, parent.
-          </p>
-        </div>
-        <div class="right-picture">
-          <img src="http://cdn3.whatculture.com/wp-content/uploads/2015/10/f5S3dvUb.jpg">
-        </div>
-      </div>
-  </section>
+</section>
 
+
+<!--bondades del producto-->
+
+
+<section class="section-feature">
+  <div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between">
+      <div>
+        <h1>Utilizamos sólo <span class="text-highlight">Lo Mejor</span></h1>
+        <p class="p-2"> Nuestros productos están certificados por Epson Studio Proof,
+        lo que asegura sólo la mejor calidad para tus recuerdos, cómo sólo tú te mereces
+        </p>
+
+        <ul>
+          <li>tintas originales</li>
+          <li>papeles certificados</li>
+          <li>garantia de impresión</li>
+        </ul>
+      </div>
+
+      <img class="img-fluid w-50 rounded" src="https://res.cloudinary.com/dsxmae0xw/image/upload/c_scale,w_400/v1644355131/instapix-chinoa-assets/foto-acabado-1_lj2ett.jpg" alt="">
+
+    </div>
+  </div>
+
+</section>
 
 
   <section id="testimonial-slider" class="bg-success py-5">
@@ -90,8 +107,10 @@
                               <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644272699/instapix-chinoa-assets/avatar31_yqinqv.jpg" class="img-fluid" alt="testimonial slider">
                           </div>
                           <div class="slider-caption mt-3">
-                              <p class="fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Jose Gonzales</cite></figcaption>
+                              <p class="fs-5">Estoy tan agradecida de que tenemos libros ilustrados disponibles
+                              para que nuestros hijos los vean! ¡A todos nos encanta mirar hacia atrás! Ya sea un libro lleno
+                              de momentos cotidianos o una colección de vacaciones, son increíbles.</p>
+                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Maria Gonzales</cite></figcaption>
                           </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="10000">
@@ -99,8 +118,9 @@
                               <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644272699/instapix-chinoa-assets/avatar11_jlth84.jpg" class="img-fluid" alt="testimonial slider">
                           </div>
                           <div class="slider-caption mt-3">
-                              <p class="fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Rajnish Kumar</cite></figcaption>
+                              <p class="fs-5">¡Me encanta mi suscripción mensual! Me permite tomar fotos y convertirlas
+                              automáticamente en un libro. ¡Recomiendo Instapix a todos! PD: Los instaframes son especialmente buenos también</p>
+                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Fernando Gutierrez</cite></figcaption>
                           </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="10000">
@@ -108,8 +128,10 @@
                               <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644272699/instapix-chinoa-assets/avatar21_z4cqvh.jpg" class="img-fluid" alt="testimonial slider">
                           </div>
                           <div class="slider-caption mt-3">
-                              <p class="fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Pardeep Dahiya</cite></figcaption>
+                              <p class="fs-5"> Llevo muchos años haciendo una serie de Instapix desde mi Instagram.
+                              Tienen EL mejor soporte técnico de cualquier producto que haya visto.
+                              Gracias, Instapix!! Nuestra familia adora su producto.</p>
+                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Pia Ramirez</cite></figcaption>
                           </div>
                       </div>
                   </div>
@@ -128,7 +150,8 @@
 
 
 
-  <div class="ribbon-container my-4 bg-secondary">
+
+  <div class="ribbon-container bg-light">
       <div class="row d-flex align-items-center pt-4">
           <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mx-auto center-vertical">
             <h2 class="text-center py-4">¿Todo preparado para comenzar tu aventura con Instapix?</h2>

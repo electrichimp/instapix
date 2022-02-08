@@ -41,10 +41,10 @@ photo3 = URI.open('https://cdn2.chrzz.com/contents/assets/detail_images-k87di9rd
 product_0_photos = [photo0, photo1, photo2, photo3]
 
 # instaFrame
-photo11 = URI.open('https://secure.img1-fg.wfcdn.com/im/47328520/resize-h310-w310%5Ecompr-r85/9706/97062522/5-piece-tymoteusz-picture-frame-set-set-of-5.jpg')
-photo12 = URI.open('https://pyxis.nymag.com/v1/imgs/7c2/c2a/91c77a2633f8910db163bc4301fd1666b6.rsquare.w600.jpg')
-photo13 = URI.open('https://akimages.shoplocal.com/dyn_li/412.0.90.0/Retailers/michaels/220130IA_Pg1_7989_1.jpg')
-photo14 = URI.open('https://pyxis.nymag.com/v1/imgs/590/3f7/04394acab9b92c2ba481cb87a31876ed60-digital-picture-frame-lede.2x.rsocial.w600.jpg')
+photo11 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644359883/instapix-chinoa-assets/product-photos/instaframe0_i3nq2s.jpg')
+photo12 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644359883/instapix-chinoa-assets/product-photos/instaframe1_elxuyd.jpg')
+photo13 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644359883/instapix-chinoa-assets/product-photos/instaframe4_wxnysc.jpg')
+photo14 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644359883/instapix-chinoa-assets/product-photos/instaframe-2_tqsn59.jpg')
 
 product_1_photos = [photo11, photo12, photo13, photo14]
 

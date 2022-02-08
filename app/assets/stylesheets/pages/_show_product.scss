@@ -5,19 +5,25 @@
 }
 
 .container-show-product {
-  width: 98%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .carousel-container {
-  height: 500px;
+  height: 600px;
   width: 80%;
 }
 
 @media (max-width: 600px) {
   .container-show-product {
-    height: 82vh;
+    height: 130vh;
   }
+
+  .container-features {
+    padding: 40 auto;
+    margin: 40 auto;
+  }
+
 }
 
 .user-photo {
@@ -33,14 +39,6 @@
   width: 150px;
 }
 
-section p {
-	height: 170px;
-	width: 600px;
-	padding: 0;
-	margin: 0;
-	line-height: 20px;
-	vertical-align: top;
-}
 
 .main-topic {
 	width: 1200px;
@@ -59,4 +57,13 @@ section p {
 .ribbon-container {
   height: 300px;
   width: 100%;
+}
+
+.section-feature {
+  background-color: #DCD7FA;
+}
+
+.text-highlight{
+  color: #6048F0;
+  font-weight: bold;
 }
