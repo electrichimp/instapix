@@ -39,6 +39,8 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'geocoder'
 # turbolink render
 gem 'turbolinks_render'
+# instagram helper gem
+gem 'instagram_basic_display'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
