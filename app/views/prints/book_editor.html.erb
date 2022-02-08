@@ -8,7 +8,7 @@
             <%= f.input :title, label: "Qué título quieres poner?" %>
             <%= f.input :cover_photo, as: :file, label: "Foto de portada?"%>
             <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
-            <a target="_blank" href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://cbb5-2001-1388-3c1-7520-dcb6-f211-1b91-735b.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code"
+            <a target="_blank" href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code"
             >Cargar de instagram</a>
             <% if @new %>
               <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
@@ -40,8 +40,9 @@
       <% @print.photos.each do |photo| %>
         <div class="photo-container">
           <%= cl_image_tag photo.key, class: "photo" %>
+          <i class="fas fa-solid fa-check check-btn" style="display: none;"></i>
           <%= link_to trash_print_path(key: photo.key), method: :delete do %>
-              <i class="fas fa-trash-alt delete-photo-btn"></i>
+            <i class="fas fa-trash-alt delete-photo-btn"></i>
           <% end %>
         </div>
       <% end %>
@@ -50,3 +51,7 @@
 <% end %>
 
 </div>
+
+
+<script>
+</script>
