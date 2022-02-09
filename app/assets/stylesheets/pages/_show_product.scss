@@ -5,17 +5,65 @@
 }
 
 .container-show-product {
-  width: 98%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .carousel-container {
-  height: 500px;
+  height: 600px;
   width: 80%;
 }
 
 @media (max-width: 600px) {
   .container-show-product {
-    height: 82vh;
+    height: 130vh;
   }
+
+  .container-features {
+    padding: 40 auto;
+    margin: 40 auto;
+  }
+
+}
+
+.user-photo {
+    width: 120px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#img-stars{
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+
+.main-topic {
+	width: 1200px;
+	margin: 0 auto;
+	clear: both;
+  display: flex;
+}
+
+.left-text{
+	vertical-align:middle;
+}
+
+.right-picture > img{
+	display: block;
+}
+.ribbon-container {
+  height: 300px;
+  width: 100%;
+}
+
+.section-feature {
+  background-color: #DCD7FA;
+}
+
+.text-highlight{
+  color: #6048F0;
+  font-weight: bold;
 }
