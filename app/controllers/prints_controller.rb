@@ -1,4 +1,7 @@
+require "open-uri"
+
 class PrintsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def new
     @product = Product.find(params[:product_id])
     @print = Print.new(product: @product)
@@ -90,6 +93,29 @@ class PrintsController < ApplicationController
     @print.photos.detach
     @print.photos.attach persisted_photos_blob
     redirect_to edit_print_path(@print)
+  end
+
+  def remember_print
+    session[:remembered_print] = { new: false, id: params[:id] }
+    redirect_to "https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code"
+  end
+
+  def upload_instagram
+    # byebug
+    urls = params[:urls]
+    if session[:remembered_print]["new"] == true
+      product = Product.find(session[:remembered_print]["id"])
+      print = Print.create(product: product, order: pending_order)
+    else
+      print = Print.find(session[:remembered_print]["id"])
+    end
+    urls.each do |url|
+      file = URI.open(url)
+      print.photos.attach(io: file, filename: "from_instagram", content_type: 'image/png')
+    end
+    print.save
+    session[:remembered_print] = nil
+    render json: { url: edit_print_url(print) }.to_json
   end
 
   private

@@ -95,7 +95,17 @@
               </div>
 
 
-            <a href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code" class="btn btn-flat rounded-pill shadow-sm d-block mb-5">Cargar de Instagram</a>
+            <%
+=begin%>
+ <a href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code" class="btn btn-flat rounded-pill shadow-sm d-block mb-5">Cargar de Instagram</a>
+<%
+=end%>
+
+            <% if @new %>
+              <%= link_to "Cargar de Instagram", remember_product_path(@print.product), class: "btn btn-flat rounded-pill shadow-sm d-block mb-5" %>
+            <% else %>
+              <%= link_to "Cargar de Instagram", remember_print_path(@print), class: "btn btn-flat rounded-pill shadow-sm d-block mb-5" %>
+            <% end %>
 
             <% if @new %>
               <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat shadow-sm"%>
