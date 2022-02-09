@@ -56,19 +56,11 @@ ActiveRecord::Schema.define(version: 2022_02_08_135607) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.bigint "print_id"
-    t.string "caption"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["print_id"], name: "index_photos_on_print_id"
-  end
-
   create_table "prints", force: :cascade do |t|
     t.string "title"
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.float "purchase_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
