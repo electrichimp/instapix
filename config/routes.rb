@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "drafts", to: 'pages#drafts', as: :drafts
   get "about", to: 'pages#about_us', as: :about_us
   get "instagram", to: 'pages#instagram', as: :instagram
+  get "error_404", to: 'pages#error_404', as: :error_404
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
   end
