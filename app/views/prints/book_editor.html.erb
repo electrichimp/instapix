@@ -80,12 +80,12 @@
               </div>
 <%
 =end%>
-                  <%= f.input :title, label: "Qué título quieres poner?" %>
+                  <%= f.input :title, placeholder: "Qué título quieres poner?", label: false, input_html: {class: "rounded-pill py-4 px-4 shadow-sm border-0" }%>
               <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
                   <div class="input-group-append">
                       <label for="print_cover_photo" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elegir portada</small></label>
                   </div>
-                  <%= f.input :cover_photo, as: :file, input_html: {class: "img-upload form-control border-0" }, label: "No se eligio portada", :label_html => { :class => 'font-weight-light text-muted upload-label', id: "print_cover_photo_label" } %>
+                  <%= f.input :cover_photo, as: :file, input_html: {class: "img-upload form-control border-0" }, label: "No se eligio portada", :label_html => { :class => 'font-weight-light text-muted upload-cover-label', id: "print_cover_photo_label" } %>
               </div>
               <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
                   <div class="input-group-append">
@@ -95,15 +95,15 @@
               </div>
 
 
-            <a href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code" class="btn btn-flat d-block mb-5">Cargar de Instagram</a>
+            <a href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code" class="btn btn-flat rounded-pill shadow-sm d-block mb-5">Cargar de Instagram</a>
 
             <% if @new %>
-              <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
+              <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat shadow-sm"%>
             <% else %>
-              <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
+              <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat shadow-sm"%>
             <% end %>
             <% unless @new %>
-              <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
+              <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat shadow-sm" %>
             <% end %>
             </div>
 
