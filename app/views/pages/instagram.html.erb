@@ -1,5 +1,18 @@
   <div class="container">
+
     <button id="instagram-btn" class="btn btn-flat">Mandar fotos</button>
+
+    <%
+=begin%>
+ <%= simple_form_for(url: upload_instagram_prints_path, method: :patch) do |f| %>
+      <%= f.hidden :urls %>
+      <%= f.button "Volver a print":submit, class: "btn-primary" %>
+    <% end %>
+<%
+=end%>
+
+
+
     <% if current_user && current_user.instagram_auth_code %>
       <div class="photos mt-5">
         <% @pages.each do |page| %>
@@ -15,6 +28,7 @@
       </div>
     <% end %>
   </div>
+
 
 
 <script>
@@ -34,5 +48,18 @@
       photos.push(photo.src)
     })
     console.log(photos)
+    console.log("<%= upload_instagram_prints_url %>")
+    fetch("<%= upload_instagram_prints_url %>", {
+            method: 'PATCH',
+            body: JSON.stringify({
+              urls: photos,
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+        .then((response) => response.json())
+        .then((json) => window.location.replace(json.url));
+
   })
 </script>
