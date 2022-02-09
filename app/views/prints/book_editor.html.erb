@@ -82,30 +82,32 @@
 =end%>
               <%= f.input :title, label: "Qué título quieres poner?" %>
 
-              <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
+              <%# <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
                   <div class="input-group-append">
                       <label for="print_cover_photo" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elegir portada</small></label>
                   </div>
                   <%= f.input :cover_photo, as: :file, input_html: {class: "img-upload form-control border-0" }, label: "No se eligio portada", :label_html => { :class => 'font-weight-light text-muted upload-label', id: "print_cover_photo_label" } %>
-              </div>
+              <%# </div>
               <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
                   <div class="input-group-append">
                       <label for="print_photos" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elegir fotos</small></label>
                   </div>
                   <%= f.input :photos, as: :file, input_html: { multiple: true, class: "img-upload form-control border-0" }, label: "No se eligieron fotos", :label_html => { :class => 'font-weight-light text-muted upload-label', id: "print_photos_label" } %>
-              </div>
+              <%# </div> %>
 
 
-              <a href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code" class="btn btn-flat d-block mb-5">Cargar de Instagram</a>
+              <%# <a href="https://api.instagram.com/oauth/authorize?client_id=1569528696781232&redirect_uri=https://0667-2001-1388-3c1-7520-c4af-9418-bf1a-d0eb.ngrok.io/instagram/&scope=user_profile,user_media&response_type=code" class="btn btn-flat d-block mb-5">Cargar de Instagram</a> %>
+              <!-- Button trigger modal-->
+            <button type="button" class="btn btn-flat btn-block mb-5" data-toggle="modal" data-target="#modalPush">Cargar fotos</button>
 
-              <% if @new %>
-                <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
-              <% else %>
-                <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
-              <% end %>
-              <% unless @new %>
-                <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
-              <% end %>
+
+              <%# <% if @new %>
+               <%#  <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
+              <%# else %>
+                <%#= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
+              <%# end %>
+
+
             </div>
 
 
@@ -113,8 +115,7 @@
 
 
 <%# INICIO DE MODAL 1 %>
-            <!-- Button trigger modal-->
-            <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#modalPush">Cargar fotos</button>
+
 
             <!--Modal: modalPush-->
             <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -164,7 +165,7 @@
 
                     <div class="col-lg-12 mx-auto">
                       <%= simple_form_for([@product, @print]) do |f| %>
-                        <%= f.input :title, label: "Qué título quieres poner?" %>
+                        <%# <%= f.input :title, label: "Qué título quieres poner?" %>
 
                         <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
                             <div class="input-group-append">
@@ -196,12 +197,16 @@
             <!--Modal: modalPush2-->
 <%# FIN DE MODAL 2 %>
 
-
+            <% unless @new %>
+              <div style="text-align: end">
+                <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
+              </div>
+            <% end %>
             <!-- Uploaded image area-->
 
               <% if @print.photos.attached? %>
 
-                  <div class="photos my-5">
+                  <div class="photos mt-1 mb-5">
                     <% if @print.cover_photo.attached? %>
                       <div class="photo-container">
                         <div class="cover-photo-tag">Portada</div>
