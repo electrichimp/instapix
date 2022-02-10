@@ -50,9 +50,8 @@ class PrintsController < ApplicationController
     @print = Print.find(params[:id])
     if print_params[:photos] || print_params[:cover_photo] || print_params[:title]
       @print.photos.attach(params[:print][:photos]) if params[:print][:photos].present?
-      # @print.cover_photo.attach(params[:print][:cover_photo]) if params[:print][:cover_photo].present?
+      @print.cover_photo.attach(params[:print][:cover_photo]) if params[:print][:cover_photo].present?
       @print.save
-      @print.update(cover_photo: print_params[:cover_photo])
       @print.update(title: print_params[:title])
       redirect_to edit_print_path(@print)
       # case @print.product.category

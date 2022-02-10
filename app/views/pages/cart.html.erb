@@ -150,7 +150,7 @@
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Costo de envío</strong><strong>S/.5.00</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">IGV</strong><strong>S/.<%= (@total_price - (@total_price/1.18).round(2)).round(2)%></strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                <h5 class="font-weight-bold">S/<%= number_with_precision(@total_price + 5, precision: 2) %></h5>
+                <h5 class="font-weight-bold">S/<%= number_with_precision(@total_price, precision: 2) %></h5>
               </li>
             </ul><button  id="sweet-alert-demo" type="submit" class="btn btn-dark rounded-pill py-2 btn-block btn-flat" data-action='click->ship-pay-order#send'>Enviar orden</button>
             <%# <button id="sweet-alert-demo" class="btn btn-danger">Delete</button> %>
