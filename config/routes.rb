@@ -8,10 +8,17 @@ Rails.application.routes.draw do
   get "error_404", to: 'pages#error_404', as: :error_404
   resources :products, only: [:show] do
     resources :prints, only: [:new, :create]
+    member do
+      get "remember_product", to: 'products#remember_product', as: :remember
+    end
   end
   resources :prints, only: [:edit, :update, :destroy] do
+    collection do
+      patch "upload_instagram", to: 'prints#upload_instagram', as: :upload_instagram
+    end
     member do
       delete "trash/:key", to: 'prints#trash_pic', as: :trash
+      get "remember_print", to: 'prints#remember_print', as: :remember
       patch :complete
     end
   end
