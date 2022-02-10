@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-     <img src="https://res.cloudinary.com/juanma123/image/upload/v1643852305/title_h1_1_iyzpv0.png" alt="instapixit" class="navbar-logo">
+     <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644455044/instapix-chinoa-assets/logo/logo4_qvfg2f.svg" alt="instapixit" class="navbar-logo">
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,10 @@
 
           <li class="nav-item">
             <%= link_to "Admin", orders_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "My Orders", my_orders_path, class: "nav-link" %>
           </li>
 
 

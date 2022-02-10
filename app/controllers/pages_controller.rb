@@ -51,8 +51,14 @@ class PagesController < ApplicationController
       @pages << @client.media_feed(fields: %i[caption media_url], paginated_url: next_page_link)
       index += 1
     end
+  end
 
-
+  def my_orders
+    @orders = current_user.orders.where.not(state: "pending")
+    @paids = current_user.orders.where(state: "paid")
+    @printings = current_user.orders.where(state: "printing")
+    @delivers = current_user.orders.where(state: "ready_to_deliver")
+    @delivered = current_user.orders.where(state: "delivered")
   end
 
 

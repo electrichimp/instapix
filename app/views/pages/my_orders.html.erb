@@ -30,22 +30,28 @@
                   <table class="table">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">State</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Monto</th>
-                        <th scope="col">Fecha_compra</th>
-                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
                       </tr>
                     <% @orders.each do |order| %>
                       <tr>
                         <td><%= order.id %> </td>
-                        <td><%= order.user_id %></td>
                         <td><%= order.state %></td>
                         <td><%= order.shipping_address %></td>
                         <td><%= order.total_price %></td>
-                        <td><%= order.purchase_date %></td>
-                        <td><%= link_to "Ver", order_path(order) %></td>
+                        <td><%= order.purchase_date.strftime("%Y %m %d") %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
                       </tr>
                     <% end %>
                   </table>
@@ -57,22 +63,28 @@
                   <table class="table">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">State</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Monto</th>
-                        <th scope="col">Fecha_compra</th>
-                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
                       </tr>
                     <% @paids.each do |order| %>
                       <tr>
                         <td><%= order.id %> </td>
-                        <td><%= order.user_id %></td>
                         <td><%= order.state %></td>
                         <td><%= order.shipping_address %></td>
                         <td><%= order.total_price %></td>
                         <td><%= order.purchase_date %></td>
-                        <td><%= link_to "Ver", order_path(order) %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
                       </tr>
                     <% end %>
                   </table>
@@ -83,22 +95,28 @@
                   <table class="table">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">State</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Monto</th>
-                        <th scope="col">Fecha_compra</th>
-                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
                       </tr>
                     <% @printings.each do |order| %>
                       <tr>
                         <td><%= order.id %> </td>
-                        <td><%= order.user_id %></td>
                         <td><%= order.state %></td>
                         <td><%= order.shipping_address %></td>
                         <td><%= order.total_price %></td>
                         <td><%= order.purchase_date %></td>
-                        <td><%= link_to "Ver", order_path(order) %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
                       </tr>
                     <% end %>
                   </table>
@@ -109,22 +127,28 @@
                   <table class="table">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">State</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Monto</th>
-                        <th scope="col">Fecha_compra</th>
-                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
                       </tr>
                     <% @delivers.each do |order| %>
                       <tr>
                         <td><%= order.id %> </td>
-                        <td><%= order.user_id %></td>
                         <td><%= order.state %></td>
                         <td><%= order.shipping_address %></td>
                         <td><%= order.total_price %></td>
                         <td><%= order.purchase_date %></td>
-                        <td><%= link_to "Ver", order_path(order) %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
                       </tr>
                     <% end %>
                   </table>
@@ -135,51 +159,33 @@
                   <table class="table">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User</th>
                         <th scope="col">State</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Monto</th>
-                        <th scope="col">Fecha_compra</th>
-                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
                       </tr>
                     <% @delivered.each do |order| %>
                       <tr>
                         <td><%= order.id %> </td>
-                        <td><%= order.user_id %></td>
                         <td><%= order.state %></td>
                         <td><%= order.shipping_address %></td>
                         <td><%= order.total_price %></td>
                         <td><%= order.purchase_date %></td>
-                        <td><%= link_to "Ver", order_path(order) %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
                       </tr>
                     <% end %>
                   </table>
                 </div>
 
-                <div class="tab-pane" id="cancelled_orders">
-                  <h3 class="py-3">Ordenes canceladas</h3>
-                  <table class="table">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Monto</th>
-                        <th scope="col">Fecha_compra</th>
-                        <th scope="col">Detalles</th>
-                      </tr>
-                    <% @cancelled_orders.each do |order| %>
-                      <tr>
-                        <td><%= order.id %> </td>
-                        <td><%= order.user_id %></td>
-                        <td><%= order.state %></td>
-                        <td><%= order.shipping_address %></td>
-                        <td><%= order.total_price %></td>
-                        <td><%= order.purchase_date %></td>
-                        <td><%= link_to "Ver", order_path(order) %></td>
-                      </tr>
-                    <% end %>
-                  </table>
                 </div>
 
 

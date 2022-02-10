@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = ['coupon','form'];
 
   connect() {
-    console.log(this.element);
-    console.log(this.formTarget);
   }
 
   send(e) {
@@ -15,7 +13,6 @@ export default class extends Controller {
   }
 
   coupon(e) {
-    console.log(this.couponTarget)
     this.couponTarget.classList.toggle('d-none')
   }
 }

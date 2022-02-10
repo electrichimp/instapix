@@ -53,14 +53,15 @@ class PrintsController < ApplicationController
       @print.cover_photo.attach(params[:print][:cover_photo]) if params[:print][:cover_photo].present?
       @print.save
       @print.update(title: print_params[:title])
-      case @print.product.category
-      when "book"
-        render :book_editor
-      when "frame"
-        render :frame_editor
-      when "photo"
-        render :photo_editor
-      end
+      redirect_to edit_print_path(@print)
+      # case @print.product.category
+      # when "book"
+      #   render :book_editor
+      # when "frame"
+      #   render :frame_editor
+      # when "photo"
+      #   render :photo_editor
+      # end
     else
       case @print.product.category
       when "book"
