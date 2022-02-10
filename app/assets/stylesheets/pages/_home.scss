@@ -5,7 +5,7 @@ body {
 .card-home {
   height: 160px;
   border-radius: 10px;
-  box-shadow: -9px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-bottom: 20px;
 }
 
@@ -44,6 +44,17 @@ body {
   padding-top: 15px;
   padding-bottom: 20px;
   font-size: 60px;
+}
+
+.price-tag {
+  position: absolute;
+  top: -177px;
+  left: 191px;
+  color: black;
+  background-color: #B6EFE8;
+  padding: 6px;
+  border-radius: 4px;
+  opacity: 1;
 }
 
 /* h6 {
