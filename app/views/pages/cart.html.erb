@@ -69,11 +69,11 @@
                   <th scope="col" class="border-0 bg-light">
                     <div class="py-2 text-uppercase">Precio</div>
                   </th>
-                  <th scope="col" class="border-0 bg-light">
+                  <th scope="col" class="border-0 bg-light text-center">
                     <div class="py-2 text-uppercase">Cantidad</div>
                   </th>
-                  <th scope="col" class="border-0 bg-light">
-                    <div class="py-2 text-uppercase">Remover</div>
+                  <th scope="col" class="border-0 bg-light text-center">
+                    <div class="py-2 text-uppercase ">Remover</div>
                   </th>
                 </tr>
               </thead>
@@ -81,16 +81,22 @@
                 <% @order.prints.where(complete: true).each do |print| %>
                   <tr>
                     <th scope="row" class="border-0">
-                      <div class="p-2">
-                        <img src="https://source.unsplash.com/1600x900/?photo+album/1" alt="" width="70" class="img-fluid rounded shadow-sm">
+                      <div class="p-2 d-flex">
+                      <% if print.cover_photo.attached? %>
+                        <div class="cart-photo shadow-sm" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path print.cover_photo.key, crop: :fill %>')"></div>
+                       <% elsif print.photos.attached? %>
+                        <div class="cart-photo shadow-sm" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path print.photo[0].key, crop: :fill %>')"></div>
+                      <% else %>
+                        <div class="cart-photo shadow-sm" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/1600x900/?photo+album/1')"></div>
+                      <% end %>
                         <div class="ml-3 d-inline-block align-middle">
                           <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"><%= print.product.name %></a></h5><span class="text-muted font-weight-normal font-italic d-block">Categoría: <%= print.product.category %></span>
                         </div>
                       </div>
                     </th>
-                    <td class="border-0 align-middle"><strong>S/.<%= print.product.base_price %></strong></td>
-                    <td class="border-0 align-middle"><strong><%= print.quantity %></strong></td>
-                    <td class="border-0 align-middle">
+                    <td class="border-0 align-middle"><strong>S/.<%= number_with_precision(print.product.base_price, precision: 2) %></strong></td>
+                    <td class="border-0 align-middle text-center"><strong><%= print.quantity %></strong></td>
+                    <td class="border-0 align-middle text-center">
                       <%= link_to print_path(print), method: :delete, remote: true  do %>
                         <i class="fa fa-trash text-dark"></i>
                       <% end %>
@@ -144,7 +150,7 @@
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Costo de envío</strong><strong>S/.5.00</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">IGV</strong><strong>S/.<%= (@total_price - (@total_price/1.18).round(2)).round(2)%></strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                <h5 class="font-weight-bold">S/<%= @total_price + 5 %></h5>
+                <h5 class="font-weight-bold">S/<%= number_with_precision(@total_price, precision: 2) %></h5>
               </li>
             </ul><button  id="sweet-alert-demo" type="submit" class="btn btn-dark rounded-pill py-2 btn-block btn-flat" data-action='click->ship-pay-order#send'>Enviar orden</button>
             <%# <button id="sweet-alert-demo" class="btn btn-danger">Delete</button> %>
@@ -161,7 +167,7 @@
 </div>
 
 <% else %>
-<h3>Compra pueh</h3>
+
 <% end %>
 
 

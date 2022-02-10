@@ -40,9 +40,9 @@ class OrdersController < ApplicationController
   def pay
     @order = Order.find(params[:id])
     @order.state = "paid"
-    @order.purchase_date = Date.new
+    @order.purchase_date = Time.new
     @order.total_price = 1000
-    @order.total_price = @order.prints.where(complete: true).map{ |p| p.product.base_price }.sum
+    @order.total_price = @order.prints.where(complete: true).map{ |p| p.product.base_price }.sum + 5
     @order.save
     new_order = pending_order
     uncomplete_prints = current_user.prints.where(complete: false)
