@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
-    @pendings = Order.where(state: "pending")
+    @orders = Order.where.not(state: "pending")
     @paids = Order.where(state: "paid")
     @printings = Order.where(state: "printing")
     @delivers = Order.where(state: "ready_to_deliver")
