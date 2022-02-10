@@ -24,7 +24,7 @@
                 <div>
                   <h2><%= product.name%></h2>
                 </div>
-                <h2 class="card-trip-pricing">S/.<%= product.base_price %></h2>
+                <h2 class="card-trip-pricing">S/.<%= number_with_precision(product.base_price, precision: 2) %></h2>
               </div>
               <div class="card-trip-btns-container">
                 <%= link_to "Empezar", new_product_print_path(product), class: "btn btn-flat" %>
