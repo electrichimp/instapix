@@ -33,10 +33,10 @@ products_params = [
 
 # Photos de productos
 # Instabook
-photo0 = URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk1-9rEPO4nT7LhDhDdeHuSOIGeh54XNj-vw&usqp=CAU')
-photo1 = URI.open('https://www.prestophoto.com/storage/static/landing/photos-iphoto-aperture-book-printing/apple-photo-book-template.jpg')
-photo2 = URI.open('https://cdn.shopify.com/s/files/1/1107/8092/products/12x16_Padded_Book-small_1024x1024.jpg?v=1571452366')
-photo3 = URI.open('https://cdn2.chrzz.com/contents/assets/detail_images-k87di9rddgsa1truqg7xkqrdjgaj-1x-1.jpg')
+photo0 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516563/instapix-chinoa-assets/product-photos/instabook-0_taaon5.jpg')
+photo1 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516563/instapix-chinoa-assets/product-photos/instabook-1_fsczv1.jpg')
+photo2 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516563/instapix-chinoa-assets/product-photos/instabook-2_rqge96.jpg')
+photo3 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516563/instapix-chinoa-assets/product-photos/instabook-3_duuql2.jpg')
 
 product_0_photos = [photo0, photo1, photo2, photo3]
 
@@ -49,10 +49,10 @@ photo14 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v164435988
 product_1_photos = [photo11, photo12, photo13, photo14]
 
 # instaPhotos
-photo20 = URI.open('https://blog.hootsuite.com/wp-content/uploads/2017/12/social-media-image-tools.jpg')
-photo21 = URI.open('https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=918&q=80')
-photo22 = URI.open('https://images.unsplash.com/photo-1531844806351-6f135a39b0a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80')
-photo23 = URI.open('https://www.socialprintstudio.com/img/products/mini-photo-prints/slider-2/mini-prints-7.jpg')
+photo20 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516016/instapix-chinoa-assets/product-photos/instapix-foto0_ha1n89.jpg')
+photo21 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516016/instapix-chinoa-assets/product-photos/instapix-foto1_msvmgl.jpg')
+photo22 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516017/instapix-chinoa-assets/product-photos/instapix-foto2_y5x3cw.jpg')
+photo23 = URI.open('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644516016/instapix-chinoa-assets/product-photos/instapix-foto3_hdifu4.jpg')
 
 product_2_photos = [photo21, photo22, photo23, photo20]
 # Fin Photos de productos
