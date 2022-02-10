@@ -1,0 +1,84 @@
+body {
+  font-family: "Roboto Mono", monospace;
+  font-weight: regular;
+}
+.custom-block {
+  max-width: 70%;
+}
+.about-us {
+  text-align: right;
+  padding-right: 120px;
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.blockquote-custom-icon {
+  background-color: #6048f0;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.body {
+  background-image: url("");
+}
+.titulo-card {
+  text-align: center;
+}
+
+.servicios {
+  color: #6048f0;
+}
+
+.about-us {
+  color: #6048f0;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+}
+.titulo-card {
+  font-family: "Roboto Mono", monospace;
+}
+.catch {
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+  padding-left: 50px;
+}
+
+.texto-team {
+  text-align: center;
+  font-size: 16px;
+}
+
+.text-sm {
+  font: size 16px;
+}
+
+h4,
+i {
+  font-family: "Roboto Mono", monospace;
+  font: size 5px;
+}
+
+.list-check {
+  font-size: 16px;
+}
+
+.ul,
+p {
+  font-size: 16px;
+}
+
+h2 {
+  color: #6048f0;
+}
+
+.promesas:before {
+  content: "✓";
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/*#misionpng {
+  padding-bottom: 40px;
+  padding-top: 40px;
+  height: 20px;
+  object-fit: cover;
+}*/
