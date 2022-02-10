@@ -16,5 +16,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Mono', monospace;
 }
 
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 19rem;
+}
+
+@media (max-width:767px)
+{
+  .content-wrap {
+    padding-bottom: 48rem;
+  }
+}
+
 // Your CSS personalizations
 @import "pages/show_product";
