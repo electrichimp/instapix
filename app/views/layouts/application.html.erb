@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instapixit</title>
+    <title>Instapixit - Una iniciativa de amantes de la fotografía y las cosquillitas que compartirla trae.</title>
+
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
-    <%= favicon_link_tag asset_path('https://res.cloudinary.com/dsxmae0xw/image/upload/v1644455708/instapix-chinoa-assets/logo/android-chrome-512x512_l3mop0.png') %>
+    <%= favicon_link_tag %>
   </head>
 
   <body class="min-vh-100 d-flex flex-column">

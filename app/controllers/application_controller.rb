@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   helper_method :print_drafts
   before_action :set_products
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
   def pending_order
     if user_signed_in?
       pending_order = current_user.orders.where(state: "pending").take || nil
