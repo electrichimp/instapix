@@ -1,40 +1,74 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-xs-12">
-      <div class="book-card mt-5 pt-5">
-        <h2>Crear <%= @print.product.name %></h2>
+<div class="container py-5">
 
-          <%= simple_form_for([@product, @print]) do |f| %>
-            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Fotos?" %>
+    <!-- For demo purpose -->
+    <header class="text-center">
+        <h2 class="display-4"><%= @new ? "Crear" : "Editar" %> <%= @print.product.name %></h2>
+    </header>
+
+
+    <div class="row py-4">
+        <div class="col-lg-12 mx-auto">
+
+            <!-- Upload image input-->
+            <div class="col-lg-6 mx-auto">
+              <%= simple_form_for([@product, @print]) do |f| %>
+              <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
+                  <div class="input-group-append">
+                      <label for="print_photos" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elegir fotos</small></label>
+                  </div>
+                  <%= f.input :photos, as: :file, input_html: { multiple: true, class: "img-upload form-control border-0" }, label: "No se eligieron fotos", :label_html => { :class => 'font-weight-light text-muted upload-label', id: "print_photos_label" } %>
+              </div>
             <% if @new %>
               <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
             <% else %>
               <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
             <% end %>
-          <% end %>
-      </div>
-    </div>
-
-  </div>
-
-  <div>
-    <% unless @new %>
-      <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
-    <% end %>
-  </div>
+            <% unless @new %>
+              <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
+            <% end %>
+            </div>
 
 
-<% if @print.photos.attached? %>
-  <div class="book-card mt-5 pt-5">
-    <div class="photos">
-      <% @print.photos.each do |photo| %>
-        <div class="photo-container">
-          <%= cl_image_tag photo.key, class: "photo" %>
-          <i class="fas fa-trash-alt delete-photo-btn"></i>
+            <% end %>
+
+
+
+            <!-- Uploaded image area-->
+
+              <% if @print.photos.attached? %>
+
+                  <div class="photos">
+                    <% @print.photos.each do |photo| %>
+                      <div class="photo-container">
+                        <%= cl_image_tag photo.key, class: "photo" %>
+                        <%= link_to trash_print_path(key: photo.key), method: :delete do %>
+                            <i class="fas fa-trash-alt delete-photo-btn"></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+
+              <% end %>
+
+
         </div>
-      <% end %>
     </div>
-  </div>
-<% end %>
-
 </div>
+
+<script>
+// /*  ==========================================
+//     SHOW UPLOADED IMAGE NAME
+// * ========================================== */
+var input = document.getElementById( 'print_photos' );
+var infoArea = document.getElementById( 'print_photos_label' );
+
+input.addEventListener('change', showFileName);
+function truncate(str, n){
+  return (str.length > n) ? str.substr(0, n-1) + '...' : str;
+};
+function showFileName(e) {
+  const input = e.srcElement;
+  const files = Array.from(input.files).map(f => f.name).join();
+  infoArea.textContent = truncate(files,30);
+}
+</script>

@@ -1,58 +1,162 @@
-<div class="container-show-product center-vertical">
-  <div class="row my-5">
-    <div class="col-md-8 col-sm-12">
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <% @product.photos.each_with_index do |photo, index| %>
-            <% if index==0 %>
-              <div class="carousel-item active" data-bs-interval="2000">
-                <%= cl_image_tag photo.key, style: "width: 100%; height: 500px; object-fit: cover;" ,
-                  class: "d-block w-100" %>
-              </div>
-            <% else %>
-              <div class="carousel-item" data-bs-interval="2000">
-                <%= cl_image_tag photo.key, style: "width: 100%; height: 500px; object-fit: cover;" ,
-                  class: "d-block w-100" %>
-              </div>
+<!--este es el carrousel-->
+
+  <div class="container-show-product center-vertical bg-white">
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @product.photos.each_with_index do |photo, index| %>
+              <% if index==0 %>
+                <div class="carousel-item active" data-bs-interval="3000">
+                  <%= cl_image_tag photo.key, style: "width: 100%; height: 600px; object-fit: cover;" ,
+                    class: "d-block w-100" %>
+                </div>
+              <% else %>
+                <div class="carousel-item" data-bs-interval="3000">
+                  <%= cl_image_tag photo.key, style: "width: 100%; height: 600px; object-fit: cover;" ,
+                    class: "d-block w-100" %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <%# <span class="visually-hidden">Previous</span> %>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <%# <span class="visually-hidden">Next</span> %>
+          </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <%# <span class="visually-hidden">Previous</span> %>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <%# <span class="visually-hidden">Next</span> %>
-        </button>
+      </div>
+
+      <div class="col-md-4 col-sm-12 center-vertical container-features">
+        <div class="container">
+          <h2 class="py-2"><strong>
+              <%= @product.name %>
+            </strong></h2>
+          <h3 style="color: #6048F0;">S/.<%= @product.base_price %>
+          </h3>
+          <h3>
+            <%= @product.description %>
+          </h3>
+          <ul>
+            <%= sanitize @product.details %>
+          </ul>
+          <div class="text-center pt-5 pb-5">
+            <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-md-4 col-sm-12 center-vertical">
-      <div class="container">
-        <h2><strong>
-            <%= @product.name %>
-          </strong></h2>
-        <h3 style="color: #6048F0;">S/.<%= @product.base_price %>
-        </h3>
-        <h3>
-          <%= @product.description %>
-        </h3>
+
+<section>
+
+  <div class="jumbotron mb-0">
+    <div class="container">
+      <h1 class="center-text">
+        "No creí la calidad de los productos cuando lo tuve en mis manos.
+        Realmente es un producto premium, siempre quedo bien en los regalos."
+      </h1>
+      <p></p>
+      <p><a class="btn btn-flat" href="#" role="button">Learn more</a></p>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!--bondades del producto-->
+
+
+<section class="section-feature">
+  <div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between">
+      <div>
+        <h1>Utilizamos sólo <span class="text-highlight">Lo Mejor</span></h1>
+        <p class="p-2"> Nuestros productos están certificados por Epson Studio Proof,
+        lo que asegura sólo la mejor calidad para tus recuerdos, cómo sólo tú te mereces
+        </p>
         <ul>
-          <%= sanitize @product.details %>
+          <li>tintas originales</li>
+          <li>papeles certificados</li>
+          <li>garantia de impresión</li>
         </ul>
-        <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
       </div>
+
+      <img class="img-fluid w-50 rounded" src="https://res.cloudinary.com/dsxmae0xw/image/upload/c_scale,w_400/v1644355131/instapix-chinoa-assets/foto-acabado-1_lj2ett.jpg" alt="">
+
     </div>
   </div>
 
+</section>
 
+
+  <section id="testimonial-slider" class="bg-success py-5">
+      <div class="container">
+          <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+              <div class="col-sm-8 mx-auto">
+                  <div class="carousel-inner text-center text-white py-5">
+                      <div class="carousel-item active" data-bs-interval="10000">
+                          <div class="user-photo shadow">
+                              <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644272699/instapix-chinoa-assets/avatar31_yqinqv.jpg" class="img-fluid" alt="testimonial slider">
+                          </div>
+                          <div class="slider-caption mt-3">
+                              <p class="fs-5">Estoy tan agradecida de que tenemos libros ilustrados disponibles
+                              para que nuestros hijos los vean! ¡A todos nos encanta mirar hacia atrás! Ya sea un libro lleno
+                              de momentos cotidianos o una colección de vacaciones, son increíbles.</p>
+                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Maria Gonzales</cite></figcaption>
+                          </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="10000">
+                          <div class="user-photo shadow">
+                              <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644272699/instapix-chinoa-assets/avatar11_jlth84.jpg" class="img-fluid" alt="testimonial slider">
+                          </div>
+                          <div class="slider-caption mt-3">
+                              <p class="fs-5">¡Me encanta mi suscripción mensual! Me permite tomar fotos y convertirlas
+                              automáticamente en un libro. ¡Recomiendo Instapix a todos! PD: Los instaframes son especialmente buenos también</p>
+                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Fernando Gutierrez</cite></figcaption>
+                          </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="10000">
+                          <div class="user-photo shadow">
+                              <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644272699/instapix-chinoa-assets/avatar21_z4cqvh.jpg" class="img-fluid" alt="testimonial slider">
+                          </div>
+                          <div class="slider-caption mt-3">
+                              <p class="fs-5"> Llevo muchos años haciendo una serie de Instapix desde mi Instagram.
+                              Tienen EL mejor soporte técnico de cualquier producto que haya visto.
+                              Gracias, Instapix!! Nuestra familia adora su producto.</p>
+                              <figcaption class="blockquote-footer mt-3 text-white fs-5"><cite>Pia Ramirez</cite></figcaption>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden"></span>
+              </button>
+        </div>
+    </div>
+</section>
+
+
+
+
+  <div class="ribbon-container bg-light">
+      <div class="row d-flex align-items-center pt-4">
+          <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 mx-auto center-vertical">
+            <h2 class="text-center py-4">¿Todo preparado para comenzar tu aventura con Instapix?</h2>
+            <div class="d-flex justify-content-center pb-2">
+              <%= link_to "Crear #{@product.name}" , new_product_print_path(@product) , class: "btn btn-flat" %>
+            </div>
+          </div>
+      </div>
+  </div>
 </div>
-
-  <div class="container align-items-center mb-5">
-    <h2 class="mb-5">Cientos de clientes satisfechos nos recomiendan ...</h2>
-    <div class="d-flex justify-content-around">
-      <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644002541/instapix-chinoa-assets/Group_12_vhnj7b.png" class="img-fluid" alt="Responsive image">
-      <img src="https://res.cloudinary.com/dsxmae0xw/image/upload/v1644002540/instapix-chinoa-assets/Group_13_qlzty9.png" class="img-fluid" alt="Responsive image">
-    </div>
-  </div>

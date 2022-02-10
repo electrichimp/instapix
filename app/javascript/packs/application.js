@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import { initAutocomplete } from '../plugins/init_autocomplete'
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 Rails.start()
 Turbolinks.start()
@@ -27,4 +29,18 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initAutocomplete()
 });
+
+initSweetalert('#sweet-alert-demo', {
+  title: "Orden enviada",
+  /* text: "This is a great alert, isn't it?", */
+  icon: "success"
+}, (value) => {
+  if (value) {
+    const link = document.querySelector('#payment-link');
+    link.click();
+  }
+});
+
+import "controllers"

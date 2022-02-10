@@ -1,0 +1,65 @@
+  <div class="container">
+
+    <button id="instagram-btn" class="btn btn-flat">Mandar fotos</button>
+
+    <%
+=begin%>
+ <%= simple_form_for(url: upload_instagram_prints_path, method: :patch) do |f| %>
+      <%= f.hidden :urls %>
+      <%= f.button "Volver a print":submit, class: "btn-primary" %>
+    <% end %>
+<%
+=end%>
+
+
+
+    <% if current_user && current_user.instagram_auth_code %>
+      <div class="photos mt-5">
+        <% @pages.each do |page| %>
+          <% page.payload.data.each do |post| %>
+            <div class="photo-container">
+              <img src="<%= post["media_url"] %>" class="photo" alt="">
+                <i class="fas fa-solid fa-check check-btn"></i>
+              <%= link_to "#", method: :patch do %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
+
+<script>
+  photos = [];
+  const checks = document.querySelectorAll(".check-btn");
+  const btn = document.querySelector("#instagram-btn");
+  checks.forEach( check => {
+    check.addEventListener('click', () => {
+      check.classList.toggle("green")
+      const photo = check.parentElement.querySelector('.photo')
+      photo.classList.toggle("selected")
+      // photos.includes(photo.src) ? photos.filter(src => src !== photo.src) : photos.push(photo.src)
+      // console.log(photos)
+  })});
+  btn.addEventListener('click', () => {
+    document.querySelectorAll(".photo.selected").forEach(photo =>  {
+      photos.push(photo.src)
+    })
+    console.log(photos)
+    console.log("<%= upload_instagram_prints_url %>")
+    fetch("<%= upload_instagram_prints_url %>", {
+            method: 'PATCH',
+            body: JSON.stringify({
+              urls: photos,
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+        .then((response) => response.json())
+        .then((json) => window.location.replace(json.url));
+
+  })
+</script>
