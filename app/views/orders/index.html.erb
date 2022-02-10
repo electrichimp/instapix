@@ -1,25 +1,221 @@
 
-<div class="container">
-  <table class="table">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">User</th>
-        <th scope="col">State</th>
-        <th scope="col">Direccion</th>
-        <th scope="col">Monto</th>
-        <th scope="col">Fecha_compra</th>
-        <th scope="col">Detalles</th>
-      </tr>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %> </td>
-        <td><%= order.user_id %></td>
-        <td><%= order.state %></td>
-        <td><%= order.shipping_address %></td>
-        <td><%= order.total_price %></td>
-        <td><%= order.purchase_date %></td>
-        <td><%= link_to "Ver", order_path(order) %></td>
-      </tr>
-    <% end %>
-  </table>
+<div class="container vh-100">
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8 well">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#orders" data-toggle="tab">0 Todos </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#pendings" data-toggle="tab">1 Pending </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#paids" data-toggle="tab">2 Paid </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#printings" data-toggle="tab">3 Printing </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#delivers" data-toggle="tab">4 Ready </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#delivered" data-toggle="tab">5 Delivered </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#cancelled_orders" data-toggle="tab">6 cancelled </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active fade in" id="orders">
+                  <h2>pending tasks</h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @orders.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="pendings">
+                  <h2>pending tab </h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @pendings.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="paids">
+                  <h2>Paid tab </h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @paids.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="printings">
+                  <h2>Printing tab </h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @printings.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="delivers">
+                  <h2>Deliver tab </h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @delivers.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="delivered">
+                  <h2>Delivered tab </h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @delivered.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="cancelled_orders">
+                  <h2>Cancelled tab </h2>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    <% @cancelled_orders.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.user_id %></td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <td><%= link_to "Ver", order_path(order) %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
 </div>

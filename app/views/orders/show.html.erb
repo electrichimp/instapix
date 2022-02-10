@@ -31,3 +31,11 @@
       </tr>
   </table>
 </div>
+
+<div>
+  <%= simple_form_for @order do |f| %>
+  <%= f.input :state, collection: %i[pending paid printing ready_to_deliver delivered cancelled]  %>
+  <%= f.submit "actualizar", class: "btn btn-primary" %>
+  <% end %>
+
+</div>
