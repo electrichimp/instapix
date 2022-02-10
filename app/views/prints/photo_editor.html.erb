@@ -1,3 +1,5 @@
+<!--- nuevo formato --->
+
 <div class="container py-5">
 
     <!-- For demo purpose -->
@@ -11,33 +13,106 @@
 
             <!-- Upload image input-->
             <div class="col-lg-6 mx-auto">
-              <%= simple_form_for([@product, @print]) do |f| %>
-              <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
-                  <div class="input-group-append">
-                      <label for="print_photos" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elegir fotos</small></label>
-                  </div>
-                  <%= f.input :photos, as: :file, input_html: { multiple: true, class: "img-upload form-control border-0" }, label: "No se eligieron fotos", :label_html => { :class => 'font-weight-light text-muted upload-label', id: "print_photos_label" } %>
-              </div>
-            <% if @new %>
-              <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
-            <% else %>
-              <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
-            <% end %>
-            <% unless @new %>
-              <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
-            <% end %>
+              <button type="button" class="btn btn-flat btn-block mb-5" data-toggle="modal" data-target="#modalPush">Cargar fotos</button>
             </div>
 
 
+<%# INICIO DE MODAL 1 %>
+
+
+            <!--Modal: modalPush-->
+            <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                  <!--Header-->
+                  <div class="modal-header d-flex justify-content-center">
+                    <p class="heading">Elige de donde traer tus fotos</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+
+                  <!--Body-->
+                  <div class="modal-body">
+
+                     <% if @new %>
+                        <%= link_to remember_product_path(@print.product) do %>
+                          <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png" height="70"/>
+                        <% end %>
+                      <% else %>
+                        <%= link_to remember_print_path(@print) do %>
+                          <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png" height="70"/>
+                        <% end %>
+                      <% end %>
+
+                    <a href=# data-dismiss="modal" data-toggle="modal" data-target="#modalPush2"><img src="https://img.icons8.com/fluency/48/000000/laptop.png" height="60"/></a>
+
+                  </div>
+
+                </div>
+                <!--/.Content-->
+              </div>
+            </div>
+            <!--Modal: modalPush-->
+
+
+            <!--Modal: modalPush2-->
+            <div class="modal fade" id="modalPush2" tabindex="5" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-notify modal-info modal-lg" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                  <!--Header-->
+                  <div class="modal-header d-flex justify-content-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+
+                  <!--Body-->
+                  <div class="modal-body">
+
+
+                    <div class="col-lg-12 mx-auto">
+                      <%= simple_form_for([@product, @print]) do |f| %>
+                        <%# <%= f.input :title, label: "Qué título quieres poner?" %>
+
+                        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm photo_editor">
+                            <div class="input-group-append">
+                                <label for="print_photos" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elegir fotos</small></label>
+                            </div>
+                            <%= f.input :photos, as: :file, input_html: { multiple: true, class: "img-upload form-control border-0" }, label: "No se eligieron fotos", :label_html => { :class => 'font-weight-light text-muted upload-label', id: "print_photos_label" } %>
+                        </div>
+
+                        <% if @new %>
+                          <%= f.button :submit, "Crear #{@print.product.name}" , class: "btn btn-flat"%>
+                        <% else %>
+                          <%= f.button :submit, "Actualizar #{@print.product.name}" , class: "btn btn-flat"%>
+                        <% end %>
+                      <% end %>
+                      </div>
+
+                    </div>
+
+                </div>
+                <!--/.Content-->
+              </div>
+            </div>
+            <!--Modal: modalPush2-->
+<%# FIN DE MODAL 2 %>
+
+            <% unless @new %>
+              <div style="text-align: end">
+                <%= link_to "Mandar al carrito", complete_print_path, method: :patch, class: "btn btn-flat" %>
+              </div>
             <% end %>
-
-
-
             <!-- Uploaded image area-->
 
               <% if @print.photos.attached? %>
 
-                  <div class="photos">
+                  <div class="photos mt-1 mb-5">
                     <% @print.photos.each do |photo| %>
                       <div class="photo-container">
                         <%= cl_image_tag photo.key, class: "photo" %>
@@ -55,40 +130,16 @@
     </div>
 </div>
 
+
 <script>
-// /*  ==========================================
-//     SHOW UPLOADED IMAGE
-// * ========================================== */
-// function readURL(input) {
-//     if (input.files && input.files[0]) {
-//         var reader = new FileReader();
-
-//         reader.onload = function (e) {
-//           console.log(e)
-//           $('#imageResult')
-//                 .attr('src', e.target.result);
-//         };
-//         reader.readAsDataURL(input.files[0]);
-//     }
-// }
-
-// (function () {
-//     $('#upload').on('change', function () {
-//         readURL(input);
-//     });
-// });
-
-// /*  ==========================================
-//     SHOW UPLOADED IMAGE NAME
-// * ========================================== */
 var input = document.getElementById( 'print_photos' );
 var infoArea = document.getElementById( 'print_photos_label' );
 
-input.addEventListener('change', showFileName);
+input.addEventListener('change', showFilesNames);
 function truncate(str, n){
   return (str.length > n) ? str.substr(0, n-1) + '...' : str;
 };
-function showFileName(e) {
+function showFilesNames(e) {
   const input = e.srcElement;
   const files = Array.from(input.files).map(f => f.name).join();
   infoArea.textContent = truncate(files,30);

@@ -1,0 +1,199 @@
+
+<div class="container vh-100 py-2">
+
+  <div class="container-fluid">
+    <div class="row-fluid p-5 mt-4 bg-white">
+        <div class="span8 well">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#home" data-target="#orders" data-toggle="tab">1 Todos </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#paids" data-toggle="tab">2 Pagado </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#printings" data-toggle="tab">3 En Impresión </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#delivers" data-toggle="tab">4 Listo para enviar </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#delivered" data-toggle="tab">5 Entregado </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#home" data-target="#cancelled_orders" data-toggle="tab">6 Cancelado </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active fade in show" id="orders">
+                  <h3 class="py-3">Todas las órdenes</h3>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
+                      </tr>
+                    <% @orders.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date.strftime("%Y %m %d") %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+
+                <div class="tab-pane" id="paids">
+                  <h3 class="py-3">Ordenes pagadas</h3>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
+                      </tr>
+                    <% @paids.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="printings">
+                  <h3 class="py-3">Ordenes impresas</h3>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
+                      </tr>
+                    <% @printings.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="delivers">
+                  <h3 class="py-3">Ordenes para entregar</h3>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
+                      </tr>
+                    <% @delivers.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                <div class="tab-pane" id="delivered">
+                  <h3 class="py-3">Ordenes entregadas</h3>
+                  <table class="table">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha de compra</th>
+                        <%
+=begin%>
+ <th scope="col">Detalles</th>
+<%
+=end%>
+                      </tr>
+                    <% @delivered.each do |order| %>
+                      <tr>
+                        <td><%= order.id %> </td>
+                        <td><%= order.state %></td>
+                        <td><%= order.shipping_address %></td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.purchase_date %></td>
+                        <%
+=begin%>
+ <td><%= link_to "Ver", order_path(order) %></td>
+<%
+=end%>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+</div>
