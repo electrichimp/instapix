@@ -154,7 +154,7 @@
             <% end %>
             <!-- Uploaded image area-->
 
-              <% if @print.photos.attached? %>
+              <% if @print.photos.attached? || @print.cover_photo.attached? %>
 
                   <div class="photos mt-1 mb-5">
                     <% if @print.cover_photo.attached? %>
