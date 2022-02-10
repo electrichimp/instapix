@@ -94,7 +94,11 @@ user = User.create(
 
 orders = [
   { shipping_address: "Lizardo Montero 450, Miraflores", user: user, state: "pending", total_price: 30, purchase_date: Date.today},
-  { shipping_address: "Pedro Venturo 425, Surco", user: user, state: "pending", total_price: 20, purchase_date: Date.today}
+  { shipping_address: "Suarez 450, Miraflores", user: user, state: "paid", total_price: 30, purchase_date: Date.today},
+  { shipping_address: "Angamos 1160, Miraflores", user: user, state: "ready_to_deliver", total_price: 30, purchase_date: Date.today},
+  { shipping_address: "Pardo 1310, Miraflores", user: user, state: "delivered", total_price: 30, purchase_date: Date.today},
+  { shipping_address: "Pedro Venturo 425, Surco", user: user, state: "printing", total_price: 20, purchase_date: Date.today},
+  { shipping_address: "Diagonal 510, Miraflores", user: user, state: "cancelled", total_price: 30, purchase_date: Date.today}
 ]
 
 orders.each do |order|

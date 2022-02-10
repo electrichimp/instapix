@@ -1,33 +1,45 @@
 
-<div class="container">
-  <div class="inline pt-4">
-  <td><%= link_to "Volver", orders_path %></td>
-  <div class="py-2">
-    <h3>Numero de orden: <%= @order.id %></h3>
-    <h3>Nombre: <%= @order.user.first_name %> <%= @order.user.last_name %></h3>
+<div class="container vh-100 mt-4">
+  <div class="container p-5 bg-white">
+
+    <div class="inline">
+    <td><%= link_to "Volver", orders_path %></td>
+    <div class="py-2">
+      <h3>Numero de orden: <%= @order.id %></h3>
+      <h3>Nombre: <%= @order.user.first_name %> <%= @order.user.last_name %></h3>
+      <h3>Dirección: <%= @order.shipping_address %></h3>
+    </div>
+
+
+    </div>
+
+    <table class="table pt-4 py-4">
+        <tr>
+          <th scope="col"># print</th>
+          <th scope="col">Nombre producto</th>
+          <th scope="col">Precio de compra</th>
+        </tr>
+      <% @order.prints.each do |print| %>
+        <tr>
+          <td><%= print.id %> </td>
+          <td><%= print.product.name %></td>
+          <td><%= print.product.base_price %></td>
+        </tr>
+      <% end %>
+        <tr>
+          <td>Total </td>
+          <td></td>
+          <td><%= @order.prints.map{|print| print.product.base_price}.sum %></td>
+        </tr>
+    </table>
+
+    <div>
+      <h2>Actualizar Estado</h2>
+      <%= simple_form_for @order do |f| %>
+      <%= f.input :state, collection: %i[paid printing ready_to_deliver delivered cancelled]%>
+      <%= f.submit "Actualizar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
 
   </div>
-
-
-  </div>
-
-  <table class="table pt-4">
-      <tr>
-        <th scope="col"># print</th>
-        <th scope="col">Nombre producto</th>
-        <th scope="col">Precio de compra</th>
-      </tr>
-    <% @order.prints.each do |print| %>
-      <tr>
-        <td><%= print.id %> </td>
-        <td><%= print.product.name %></td>
-        <td><%= print.product.base_price %></td>
-      </tr>
-    <% end %>
-      <tr>
-        <td>Total </td>
-        <td></td>
-        <td><%= @order.prints.map{|print| print.product.base_price}.sum %></td>
-      </tr>
-  </table>
 </div>
