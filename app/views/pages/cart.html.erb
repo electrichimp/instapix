@@ -146,7 +146,9 @@
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                 <h5 class="font-weight-bold">S/<%= @total_price + 5 %></h5>
               </li>
-            </ul><button type="submit" class="btn btn-dark rounded-pill py-2 btn-block btn-flat" data-action='click->ship-pay-order#send'>Pagar</button>
+            </ul><button  id="sweet-alert-demo" type="submit" class="btn btn-dark rounded-pill py-2 btn-block btn-flat" data-action='click->ship-pay-order#send'>Enviar orden</button>
+            <%# <button id="sweet-alert-demo" class="btn btn-danger">Delete</button> %>
+            <%= link_to "", root_path, id: "payment-link", class: "hidden" %>
           </div>
         </div>
 

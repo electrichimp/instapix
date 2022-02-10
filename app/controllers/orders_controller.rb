@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
       print.order = new_order
       print.save
     end
-    redirect_to root_path
   end
 
   def pay
@@ -51,7 +50,6 @@ class OrdersController < ApplicationController
       print.order = new_order
       print.save
     end
-    redirect_to root_path
   end
 
   private
